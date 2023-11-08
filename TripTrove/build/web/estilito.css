@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    color: #000000;
+    text-decoration: none;
+  }
+  .navbar {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 16px 70px;
+    background-color: rgba(72, 175, 3, 0.027);
+    z-index: 1;
+  }
+  .navbar ul {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+  }
+  
+  .navbar ul li{
+    list-style: none;
+    margin: 0 20px;
+    transition: 0.5s;
+  }
+  .navbar ul li a {
+    display: block;
+    position: relative;
+    text-decoration: none;
+    padding: 5px;
+    font-size: 18px;
+    color: #000000;
+    text-transform: uppercase;
+  }
+  
+  .navbar ul:hover li a{
+    transform: scale(1.5);
+    opacity: 25;
+    filter: blur(5px);
+  }
+  
+  .navbar ul li a:hover {
+    transform: scale(2);
+    opacity: 1;
+    filter: blur(0);
+  }
+  
+  .navbar ul li a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #2eaf0d;
+    width: 100%;
+    height: 100%;
+    transition: transform 4.5s;
+    transform-origin: right ;
+    transform: scaleX(0);
+    z-index: -1;
+  }
+  
+  .navbar ul li a:hover::before{
+    transition: transform 0.65s;
+    transform-origin: left;
+    transform: scaleX(1);
+  }
+   
+  @media (max-width: 680px) {
+        .navbar ul li {
+          display: none;
+        }
+        .navbar ul,
+        .navbar ul::before,
+        .navbar ul::after {
+          width: 30px;
+          height: 2px;
+          background-color: rgba(5, 5, 5, 0.904);
+          border-radius: 10px;
+        }
+        .navbar ul {
+          display: block;
+        }
+        .navbar ul::before {
+          content: "";
+          position: absolute;
+          top: 24px;
+        }
+        .navbar ul::after {
+          content: "";
+          position: absolute;
+          bottom: 24px;
+        }
+        .navbar {
+          padding: 16px 25px;
+        }
+      }
+
+
+.parallax {
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+  }
+
+.parallax.section2 {
+    background-image: url("img/1.jpg");
+    align-items: center;
+     align-content: center;
+      text-align: left;
+     justify-content: center;
+}
+
+.parallax.section2 h1 {
+  font-size: 100px; 
+  color: #000000;
+}
+
+
+.audi {
+  background-color:#ffffff00;
+  text-align: left;
+  justify-content: center;
+}
+
+.content.audi h2 {
+  color: #000000;
+  font-size: 35px;
+}
+.multiText {
+  font-size: 35px;
+}

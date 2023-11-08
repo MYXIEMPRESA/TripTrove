@@ -1,0 +1,344 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    color: #f7f7f7;
+    text-decoration: none;
+}
+
+body {
+    background-color: black;
+    color: white;
+}
+
+.navbar {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 16px 70px;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 1;
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+}
+
+.navbar ul li {
+    list-style: none;
+    margin: 0 20px;
+    transition: 0.5s;
+}
+
+.navbar ul li a {
+    display: block;
+    position: relative;
+    text-decoration: none;
+    padding: 5px;
+    font-size: 18px;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.navbar ul:hover li a {
+    transform: scale(1.5);
+    opacity: 25;
+    filter: blur(5px);
+}
+
+.navbar ul li a:hover {
+    transform: scale(2);
+    opacity: 1;
+    filter: blur(0);
+}
+
+.navbar ul li a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #4900d1ec;
+    width: 100%;
+    height: 100%;
+    transition: transform 4.5s;
+    transform-origin: right;
+    transform: scaleX(0);
+    z-index: -1;
+}
+
+.navbar ul li a:hover::before {
+    transition: transform 0.65s;
+    transform-origin: left;
+    transform: scaleX(1);
+}
+
+@media (max-width: 680px) {
+    .navbar ul li {
+        display: none;
+    }
+
+    .navbar ul,
+    .navbar ul::before,
+    .navbar ul::after {
+        width: 30px;
+        height: 2px;
+        background-color: rgb(5, 5, 5);
+        border-radius: 10px;
+    }
+
+    .navbar ul {
+        display: block;
+    }
+
+    .navbar ul::before {
+        content: "";
+        position: absolute;
+        top: 24px;
+    }
+
+    .navbar ul::after {
+        content: "";
+        position: absolute;
+        bottom: 24px;
+    }
+
+    .navbar {
+        padding: 16px 25px;
+    }
+}
+
+.parallax.section1 {
+    position: relative;
+    background-image: url('img/fondito.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    height: 90vh; /* Reducido a la mitad de la altura original */
+}
+
+.parallax.section1 .parallax-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%; /* Cubre la mitad izquierda de la sección Parallax */
+    height: 100%; /* Cubre toda la altura de la sección Parallax */
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.parallax.section1 .parallax-overlay h1,
+.parallax.section1 .parallax-overlay p {
+    color: white;
+    text-align: center;
+}
+
+.black-section {
+    display: flex;
+    background-color: black;
+    color: white;
+    padding: 50px;
+    align-items: center;
+}
+
+.image-block1 {
+    flex: 1;
+    padding: 20px;
+    position: relative;
+}
+
+.image-block1::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(transparent, black);
+    mix-blend-mode: overlay;
+}
+
+.image-block1 img {
+    max-width: 86%;
+    border-radius: 6%;
+}
+
+.text-block1 {
+    flex: 2;
+    padding: 20px;
+}
+
+.text-block1 h2 {
+    font-size: 55px;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.text-block1 p {
+    font-size: 17.5px;
+    text-align: justify;
+}
+
+.black-section2 {
+    display: flex;
+    background-color: black;
+    color: white;
+    padding: 50px;
+    align-items: center;
+}
+
+.image-block2 {
+    flex: 1;
+    padding: 20px;
+    position: relative;
+}
+
+.image-block2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(transparent, black);
+    mix-blend-mode: overlay;
+}
+
+.image-block2 img {
+    max-width: 100%;
+    border-radius: 6%;
+}
+
+.text-block2 {
+    flex: 2;
+    padding: 20px;
+}
+
+.text-block2 h2 {
+    font-size: 53px;
+    margin-bottom: 20px;
+}
+
+.text-block2 p {
+    font-size: 17px;
+    text-align: justify;
+}
+
+/* Agrega estilos para la tercera sección */
+.black-section3 {
+    display: flex;
+    background-color: black;
+    color: white;
+    padding: 50px;
+    align-items: center;
+}
+
+.image-block3 {
+    flex: 1;
+    padding: 20px;
+    position: relative;
+}
+
+.image-block3::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(transparent, black);
+    mix-blend-mode: overlay;
+}
+
+.image-block3 img {
+    max-width: 100%;
+    border-radius: 6%;
+}
+
+.text-block3 {
+    flex: 2;
+    padding: 20px;
+}
+
+.text-block3 h2 {
+    font-size: 53px;
+    margin-bottom: 20px;
+}
+
+.text-block3 p {
+    font-size: 17.5px;
+    text-align: justify;
+}
+
+/* Estilo de la nueva sección */
+.black-section4 {
+    display: flex;
+    background-color: black;
+    color: white;
+    padding: 50px;
+    align-items: center;
+    justify-content: center; /* Centramos el contenido de la sección */
+    height: 80vh; /* Ajusta la altura de la sección según tus preferencias */
+  }
+  
+  .container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .container .card {
+    position: absolute;
+    width: 240px;
+    height: 320px;
+    border-radius: 8px;
+    background: #5e5cfc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(0, 0, 0, 0);
+    font-size: 8em;
+    font-weight: 700;
+    border: 10px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: 0.5s;
+    transform-origin: 50% 50%; /* Centra la transformación */
+    filter: hue-rotate(calc(var(--i) * 50deg));
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+  }
+
+  .container p {
+    font-size: 19px;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .container:hover .card {
+    transform: rotate(calc(var(--i) * 5deg)) translate(calc(var(--i) * 120px), -50px);
+    color: rgba(0, 0, 0, 0.25);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.25);
+  }
+
+  .container:active .card {
+    background: #333;
+  }
+  
+  .container .card:active {
+    translate: calc(var(--i) * 20px), -50px;
+    z-index: 100;
+    background: #5e5cfc;
+  }
+  
+  
