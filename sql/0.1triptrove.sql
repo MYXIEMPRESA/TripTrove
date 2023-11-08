@@ -68,5 +68,3 @@ begin
 insert into usuario(usuario,contrasenia,correo) values (procedureUsuario,procedureContrasenia,procedureCorreo);
 end;
 //DELIMITER ;
-
-select * from usuario;
