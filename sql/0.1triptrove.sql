@@ -29,7 +29,7 @@ create table comentario(
     titulo varchar(30),
     comentario varchar(30),
     cantidadPuntuacion float(2),
-    FOREIGN KEY (idUsuario) REFERENCES usuario(idUsuario)
+    foreign key (idUsuario) references usuario(idUsuario)
 );
 
 create table caracteristicas(
@@ -62,9 +62,9 @@ create table ubicacion(
     foreign key (idCaracteristicas) references caracteristicas(idCaracteristicas)
 );
 
-Delimiter //
+
 create procedure altas(in procedureUsuario varchar(20),in procedureContrasenia varchar(20),in procedureCorreo varchar(20))
 begin
 insert into usuario(usuario,contrasenia,correo) values (procedureUsuario,procedureContrasenia,procedureCorreo);
 end;
-//DELIMITER ;
+
