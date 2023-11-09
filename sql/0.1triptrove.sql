@@ -1,6 +1,6 @@
-drop database if exists tritrop;
-create database tritrop;
-use tritrop;
+drop database if exists triptrove;
+create database triptrove;
+use triptrove;
 create table usuario(
 	idUsuario int auto_increment primary key, 
 	usuario varchar(30),
@@ -62,9 +62,4 @@ create table ubicacion(
     foreign key (idCaracteristicas) references caracteristicas(idCaracteristicas)
 );
 
-
-create procedure altas(in procedureUsuario varchar(20),in procedureContrasenia varchar(20),in procedureCorreo varchar(20))
-begin
-insert into usuario(usuario,contrasenia,correo) values (procedureUsuario,procedureContrasenia,procedureCorreo);
-end;
 
