@@ -35,9 +35,8 @@ create table comentario(
 create table caracteristicas(
 	idCaracteristicas int auto_increment primary key,
     idUsuario int,
-    costoFig float(10),
-	tiempoFig float(10),
-    mapaRango varchar(30),
+    costoFig varchar(10),
+	tiempoFig varchar(10),
     foreign key (idUsuario) references usuario(idUsuario)
 );
 
