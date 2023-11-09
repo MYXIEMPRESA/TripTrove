@@ -1,5 +1,5 @@
-drop database if exists tritrop;
-create database tritrop;
+drop database if exists triptrove;
+create database triptrove;
 use tritrop;
 create table usuario(
 	idUsuario int auto_increment primary key, 
@@ -63,8 +63,4 @@ create table ubicacion(
 );
 
 
-create procedure altas(in procedureUsuario varchar(20),in procedureContrasenia varchar(20),in procedureCorreo varchar(20))
-begin
-insert into usuario(usuario,contrasenia,correo) values (procedureUsuario,procedureContrasenia,procedureCorreo);
-end;
 
