@@ -10,6 +10,46 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div>Etiquetas</div>
+          <form action="etiqueta.jsp">
+        <div><h1>Definamos tu perfil ideal</h1></div>
+        <div><h2>¿Qué lugares prefieres visitar?</h2></div>
+        <div class="etiquetas">
+            <input type="checkbox" id="diversion" name="diversion" value="diversion">Diversión 
+
+            <input type="checkbox" id="cultural" name="cultural" value="cultural">Cultural
+            <br><br>
+            <input type="checkbox" id="familiar" name="cultural" value="familiar">Familiar 
+
+            <input type="checkbox" id="naturaleza" name="naturaleza" value="naturaleza">Naturaleza
+            <br><br>
+            <input type="checkbox" id="museos" name="museos" value="museos">Museos
+
+            <input type="checkbox" id="parques" name="parques" value="parques">Parques
+            <br><br>
+            <br><br>
+             
+            </div>
+
+            <h3>Presupuesto</h3>
+            <select name="costo" id="costo">
+                <option disabled selected  value="costo">Costo</option>
+                <option value="alto">Alto</option>
+                <option value="medio">Medio</option>
+                <option value="bajo">Bajo</option>
+            </select>
+            
+            <br><br>
+            
+            <h3>Tiempo</h3>
+            <select name="tiempo" id="tiempo">
+                <option disabled selected  value="tiempo">Tiempo</option>
+                <option value="talto">Alto</option>
+                <option value="tmedio">Medio</option>
+                <option value="tbajo">Bajo</option>
+            </select>
+            
+            <br><br>
+            <button type="submit" name="subir">Siguiente</button>
+            </form>
     </body>
 </html>

@@ -1,6 +1,6 @@
 drop database if exists triptrove;
 create database triptrove;
-use tritrop;
+use triptrove;
 create table usuario(
 	idUsuario int auto_increment primary key, 
 	usuario varchar(30),
