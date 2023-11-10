@@ -104,6 +104,10 @@ button {
     float: left;
     margin-right: 10px; /* Espacio entre los botones */
 }
+.btn-submit {
+    float: left;
+    margin-right: 10px; /* Espacio entre los botones */
+}
 
 
 .fase-1 img {
