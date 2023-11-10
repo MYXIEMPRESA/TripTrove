@@ -111,7 +111,8 @@ button {
 
 
 .fase-1 img {
-    height: 100%;
+    height: 20px;
+    max-height: 20px;
 }
 
 .fase-2 img {
