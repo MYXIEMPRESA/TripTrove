@@ -1,55 +1,142 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
--->
 <html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-          <form action="etiqueta.jsp">
-        <div><h1>Definamos tu perfil ideal</h1></div>
-        <div><h2>¿Qué lugares prefieres visitar?</h2></div>
-        <div class="etiquetas">
-            <input type="checkbox" id="diversion" name="diversion" value="diversion">Diversión 
-
-            <input type="checkbox" id="cultural" name="cultural" value="cultural">Cultural
-            <br><br>
-            <input type="checkbox" id="familiar" name="cultural" value="familiar">Familiar 
-
-            <input type="checkbox" id="naturaleza" name="naturaleza" value="naturaleza">Naturaleza
-            <br><br>
-            <input type="checkbox" id="museos" name="museos" value="museos">Museos
-
-            <input type="checkbox" id="parques" name="parques" value="parques">Parques
-            <br><br>
-            <br><br>
-             
+<head>
+    <meta charset="UTF-8">
+    <title>Pilin</title>
+    <link rel="stylesheet" type="text/css" href="etiqueta.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card tarjeta">
+            <img src="img/top.png" alt="Imagen de encabezado">
+            <div class="barra-progreso"></div>
+            <div class="card-content">
+                <div class="fase fase-1">
+                    <!-- Fase 1: Bienvenida -->
+                    <h1>Bienvenido</h1>
+                    <p>¡Encuentra tu destino de ensueño!</p>
+                    <!-- Botón "Siguiente" para avanzar a la siguiente fase -->
+                    <img src="img/fase1.png" alt="Imagen de la Fase 2">
+                </div>
+                <div class="fase fase-2">
+                    <!-- Fase 2: Preguntas con checkboxes -->
+                    <h2>¿Qué buscas en un lugar?</h2>
+                    <div class="etiquetas">
+                        <label>
+                            <input type="checkbox" id="diversion" name="preferencias" value="diversion"> Diversión
+                        </label>
+                        <label>
+                            <input type="checkbox" id="cultural" name="preferencias" value="cultural"> Cultural
+                        </label>
+                        <label>
+                            <input type="checkbox" id="familiar" name="preferencias" value="familiar"> Familiar
+                        </label>
+                        <label>
+                            <input type="checkbox" id="naturaleza" name="preferencias" value="naturaleza"> Naturaleza
+                        </label>
+                        <label>
+                            <input type="checkbox" id="museos" name="preferencias" value="museos"> Museos
+                        </label>
+                        <label>
+                            <input type="checkbox" id="parques" name="preferencias" value="parques"> Parques
+                        </label>
+                        
+                    </div>
+                    <!-- Botón "Atrás" y "Siguiente" para navegar entre fases -->
+                    <img src="img/fase 2-1.png" alt="Imagen de la Fase 2">
+                    <img src="img/fase 2.png" alt="Imagen de la Fase 2">
+                    
+                </div>
+                <div class="fase fase-3">
+                    <h3>Presupuesto</h3>
+                    <select name="costo" id="costo">
+                        <option disabled selected  value="costo">Costo</option>
+                        <option value="alto">Alto</option>
+                        <option value="medio">Medio</option>
+                        <option value="bajo">Bajo</option>
+                        
+                    </select>
+                    <p>.</p>
+                    <p>.             .<img src="img/fase3.png" alt="Imagen de la Fase 2"></p>
+                </div>
+                <div class="fase fase-4">
+                    <h3>Tiempo</h3>
+                    <select name="tiempo" id="tiempo">
+                        <option disabled selected  value="tiempo">Tiempo</option>
+                        <option value="talto">Alto</option>
+                        <option value="tmedio">Medio</option>
+                        <option value="tbajo">Bajo</option>
+                        
+                    </select>
+                    <p>.</p>
+                    <p>.              .<img src="img/fase4.png" alt="Imagen de la Fase 2"></p>
+                </div>
+                <div class="fase fase-5">
+                    <h2>¡Felicidades, has terminado!</h2>
+                    <!-- Fase 5: Última fase (vacía por ahora) -->
+                    <!-- Botón "Atrás" para retroceder -->
+                    <img src="img/fase5.png" alt="Imagen de la Fase 2">
+                </div>
+                <div class="botones">
+                    <button class="btn-back">Atrás</button>
+                    <button class="btn-next">Siguiente</button>
+                </div>
             </div>
+        </div>
+    </div>
+    <script>
+        const fases = document.querySelectorAll('.fase');
+        const btnBack = document.querySelector('.btn-back');
+        const btnNext = document.querySelector('.btn-next');
+        const barraProgreso = document.querySelector('.barra-progreso');
+        let faseActual = 0;
 
-            <h3>Presupuesto</h3>
-            <select name="costo" id="costo">
-                <option disabled selected  value="costo">Costo</option>
-                <option value="alto">Alto</option>
-                <option value="medio">Medio</option>
-                <option value="bajo">Bajo</option>
-            </select>
-            
-            <br><br>
-            
-            <h3>Tiempo</h3>
-            <select name="tiempo" id="tiempo">
-                <option disabled selected  value="tiempo">Tiempo</option>
-                <option value="talto">Alto</option>
-                <option value="tmedio">Medio</option>
-                <option value="tbajo">Bajo</option>
-            </select>
-            
-            <br><br>
-            <button type="submit" name="subir">Siguiente</button>
-            </form>
-    </body>
+        // Oculta el botón "Atrás" en la primera fase
+        if (faseActual === 0) {
+            btnBack.style.display = 'none';
+        }
+
+        // Actualiza la barra de progreso al cambiar de fase
+        function actualizarBarraProgreso() {
+            const progreso = (faseActual / (fases.length - 1)) * 100;
+            barraProgreso.style.width = progreso + '%';
+        }
+
+        // Función para avanzar a la siguiente fase
+        function avanzar() {
+            if (faseActual < fases.length - 1) {
+                fases[faseActual].style.display = 'none';
+                faseActual++;
+                fases[faseActual].style.display = 'block';
+                btnBack.style.display = 'block'; // Muestra el botón "Atrás"
+                actualizarBarraProgreso();
+            }
+            // Oculta el botón "Siguiente" en la última fase
+            if (faseActual === fases.length - 1) {
+                btnNext.style.display = 'none';
+            }
+        }
+
+        // Función para retroceder a la fase anterior
+        function retroceder() {
+            if (faseActual > 0) {
+                fases[faseActual].style.display = 'none';
+                faseActual--;
+                fases[faseActual].style.display = 'block';
+                btnNext.style.display = 'block'; // Muestra el botón "Siguiente"
+                actualizarBarraProgreso();
+            }
+            // Oculta el botón "Atrás" en la primera fase
+            if (faseActual === 0) {
+                btnBack.style.display = 'none';
+            }
+        }
+
+        btnNext.addEventListener('click', avanzar);
+        btnBack.addEventListener('click', retroceder);
+
+        // Inicializar la barra de progreso
+        actualizarBarraProgreso();
+    </script>
+</body>
 </html>
