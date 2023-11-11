@@ -1,0 +1,17 @@
+#container {
+    display: flex;
+  }
+  
+  #map-container {
+    flex: 1;
+    height: 100vh;
+  }
+  
+  #route-options {
+    width: 30%;
+    height: 100vh;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  

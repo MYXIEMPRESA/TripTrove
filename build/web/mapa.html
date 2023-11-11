@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mi Página con Mapa</title>
+  <link rel="stylesheet" type="text/css" href="CSS/mapa.css">
+</head>
+<body>
+  <div id="container">
+    <div id="route-options">
+      <h2>Opciones de Ruta</h2>
+      <label for="mode">Modo de transporte:</label>
+      <select id="mode">
+        <option value="driving">Conducir</option>
+        <option value="walking">Caminar</option>
+        <option value="transit">Transporte público</option>
+        <option value="bicycling">Bicicleta</option>
+      </select>
+      <h3>Lugares Predeterminados</h3>
+      <button id="route-chapultepec">Bosque de Chapultepec</button>
+      <button id="route-zocalo">Zócalo CDMX</button>
+      <button id="route-aeropuerto">Aeropuerto CDMX</button>
+      <button id="route-xochimilco">Xochimilco</button>
+    </div>
+    <div id="map-container"></div>
+  </div>
+  <script async
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXhXtV1rMD-5y15llNS1fFMl8u8TvVBoo&libraries=places&callback=initMap">
+</script>  <script src="js/mapajava.js"></script>
+</body>
+</html>
