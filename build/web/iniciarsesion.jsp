@@ -23,7 +23,7 @@
 
     try {
         Class.forName("com.mysql.cj.jdbc.Driver");
-        cnx = DriverManager.getConnection("jdbc:mysql://localhost:3308/triptrove?autoReconnect=true&useSSL=false", "root", "n0m3l0");
+        cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/triptrove?autoReconnect=true&useSSL=false", "root", "n0m3l0");
         sta = cnx.prepareCall("select usuario, contra from usuario where usuario=? and contra=?");
         sta.setString(1, usuario);
         sta.setString(2, contra);

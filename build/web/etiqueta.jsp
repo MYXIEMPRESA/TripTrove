@@ -57,7 +57,7 @@
 
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                cnx = DriverManager.getConnection("jdbc:mysql://localhost:3308/triptrove?autoReconnect=true&useSSL=false", "root", "n0m3l0");
+                cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/triptrove?autoReconnect=true&useSSL=false", "root", "n0m3l0");
 
                 // Insertar en la tabla usuario
                 String insertUsuarioQuery = "INSERT INTO usuario (usuario, correo, contra) VALUES (?, ?, ?)";
