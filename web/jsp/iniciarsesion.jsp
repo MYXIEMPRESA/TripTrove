@@ -38,12 +38,12 @@
             Boolean loggedIn = (Boolean) sesion.getAttribute("loggedIn");
             // Si el usuario no ha iniciado sesión, redirigir a la página de inicio de sesión
             if (usuario == null || !loggedIn) {
-                response.sendRedirect("index.html");
+                response.sendRedirect("../index.html");
             } else {
-                response.sendRedirect("principal.html");
+                response.sendRedirect("../principal.html");
             }
         } else {
-            response.sendRedirect("index.html"); // Redirigir si la autenticación falla
+            response.sendRedirect("../index.html"); // Redirigir si la autenticación falla
         }
     } catch (SQLException error) {
         out.print(error.toString());

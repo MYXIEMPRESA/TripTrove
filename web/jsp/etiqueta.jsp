@@ -34,7 +34,7 @@
             session.setAttribute("correo", correo);
             session.setAttribute("contra", contra);
 
-            request.getRequestDispatcher("etiqueta.html").forward(request, response);
+            request.getRequestDispatcher("../etiqueta.html").forward(request, response);
         } else if (request.getParameter("subir") != null) {
 
             // Obtener valores de los selects
@@ -135,7 +135,7 @@
                 }
 
                 // Redirigir después de la inserción
-                response.sendRedirect("inicio.html");
+                response.sendRedirect("../inicio.html");
 
             } catch (SQLException | ClassNotFoundException | NumberFormatException error) {
                 out.print(error.toString());
