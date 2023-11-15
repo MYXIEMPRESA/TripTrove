@@ -49,17 +49,19 @@ create table caracterisitcaEspe(
 
 create table ubicacion(
 	idUbicacion int auto_increment primary key,
-	idComentario int,
-    idRuta int,
-    idCaracteristicas int,
-    tipoUbicacion varchar(10),
     nombreUbicacion varchar(10),
+    longitud float(10),
+    latitud float(10),
+    costoFig varchar(10),
+	tiempoFig varchar(10),
     puntuacionProm float(2),
-    descripcion varchar(50),
-    foreign key (idComentario) references comentario(idComentario),
-    foreign key (idRuta) references rutas(idRuta),
-    foreign key (idCaracteristicas) references caracteristicas(idCaracteristicas)
+    descripcion varchar(50)
 );
 
-
+create table caracterisitcaEspeUbicaciones(
+	idCaracEspUbic int auto_increment primary key,
+    idUbicacion int,
+    tipoCaract varchar(30),
+    foreign key (idUbicacion) references ubicacion(idUbicacion)
+);
 
