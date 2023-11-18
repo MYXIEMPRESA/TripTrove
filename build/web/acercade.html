@@ -9,15 +9,16 @@
     <title>¿Qué es Trip Trove?</title>
 </head>
 <body>
-    <nav class="navbar">
-        <h2>Trip Trove</h2>
+    <header>
+        <a href="#" class="logo">TripTrove</a>
         <ul>
-            <li><a href="index.html">INICIO</a></li>
-            <li><a href="acercade.html">ACERCA DE</a></li>
-            <li><a href="app.html">APP</a></li>
-            <li><a href="descarga.html">DESCARGA</a></li>
+          <li><a href="index.html">INICIO</a></li>
+          <li><a href="acercade.html">ACERCA DE</a></li>
+          <li><a href="app.html">APP</a></li>
+          <li><a href="descarga.html">DESCARGA</a></li>
+          <li><a href="inicio.html">INICIA SESION</a></li>
         </ul>
-    </nav>
+      </header>
 
     <div class="parallax section1">
         <div class="parallax-overlay">
@@ -28,7 +29,7 @@
 
     <div class="black-section">
         <div class="image-block1">
-            <img class="image" src="CSS/img/acercade bloque.jpg" alt="no leer !!!!">
+            <img class="image" src="CSS/img/acercade bloque.jpg" alt="bloque!">
         </div>
         <div class="text-block1">
             <h2>Descubre la Belleza y la Importancia del Turismo en la Ciudad de México</h2>
@@ -42,13 +43,13 @@
             <p>En Myxitech buscamos fomentar el turismo, la economia y la cultura, es por eso que apasionados por nuestro entorno, creamos Trip Trove, nuestro primer proyecto el cual busca hacer mas facil, claro y mucho mas personal un viaje para todo aquel interesado en visitar la mágica Ciudad de México</p>
         </div>
         <div class="image-block2">
-            <img class="image" src="CSS/img/acercade xochimilco.jpg" alt="me gusta lula">
+            <img class="image" src="CSS/img/acercadepinos.jpg" alt="ya sabemos que te gusta lula levi">
         </div>
     </div>
 
     <div class="black-section3">
         <div class="image-block3">
-            <img class="image" src="CSS/img/acercade ciudad.jpg" alt="apoco chi">
+            <img class="image" src="CSS/img/acercade ciudad.jpg" alt="acercade ciudad">
         </div>
         <div class="text-block3">
             <h2>El viaje que siempre quisiste</h2>
@@ -73,6 +74,12 @@
     <div class="black-section5">
         
     </div>
+    <script type = "text/javascript">
+        window.addEventListener("scroll",function(){
+            var header = document.querySelector("header");
+            header.classList.toggle("sticky",window.scrollY > 0);
+        })
+    </script>
 
 </body>
 </html>

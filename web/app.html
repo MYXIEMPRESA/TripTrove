@@ -7,6 +7,21 @@
     <title>NUESTRA APP</title>
 </head>
 <body>
-    
+    <header>
+        <a href="#" class="logo">TripTrove</a>
+        <ul>
+          <li><a href="index.html">INICIO</a></li>
+          <li><a href="acercade.html">ACERCA DE</a></li>
+          <li><a href="app.html">APP</a></li>
+          <li><a href="descarga.html">DESCARGA</a></li>
+          <li><a href="inicio.html">INICIA SESION</a></li>
+        </ul>
+      </header>
+      <script type = "text/javascript">
+        window.addEventListener("scroll",function(){
+            var header = document.querySelector("header");
+            header.classList.toggle("sticky",window.scrollY > 0);
+        })
+    </script>
 </body>
 </html>
