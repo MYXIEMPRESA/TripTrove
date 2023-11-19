@@ -177,5 +177,33 @@
         </div>
     </div>
     </div>
+<h1>Tipos de Características:</h1>
+
+    <ul id="tiposCaractList"></ul>
+
+    <script>
+        // Función para obtener parámetros de consulta de la URL
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        // Obtener tiposCaract de la URL
+        var tiposCaractParam = getParameterByName('tiposCaract');
+        var tiposCaractArray = tiposCaractParam ? tiposCaractParam.split(',') : [];
+
+        // Mostrar los tipos de caract en la lista
+        var tiposCaractList = document.getElementById('tiposCaractList');
+        tiposCaractArray.forEach(function(tipoCaract) {
+            var li = document.createElement('li');
+            li.textContent = tipoCaract;
+            tiposCaractList.appendChild(li);
+        });
+    </script>
 </body>
 </html>
