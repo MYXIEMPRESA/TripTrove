@@ -1,17 +1,19 @@
 <html>
     <head>
-        <title>Iniciar sesión - TripTrove</title>
+        <title>Iniciar sesión </title>
         <meta charset="UTF-8">
+        <link rel="icon" href="CSS/fotitos/logo.png" type="image/png">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="CSS/inicio.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     </head>
     <body>
         <div class="wrapper">
             <form action="iniciarsesion.jsp" method="post">
+                <br><br>
+                <h1>Inicio de Sesión</h1>
                 <br><br><br>
-                <h1>Inicio de sesión</h1>
-                <br><br><br><br>
                 <div class="input-box">
                     <label for="usuario">Usuario</label>
                     <input type="text" name="usuario" id="usuario" required>
@@ -28,12 +30,13 @@
                 
                 <div class="register-link">
                     <p>No tienes una cuenta? <a href="registro.html">Registro</a></p>
-                    <br><br>
-                    
                 </div>
-                <button class="back-button" onclick="window.location.href='index.html'">
+                <br><br>
+                    <button class="back-button" onclick="window.location.href='index.html'">
                         <span class="material-symbols-outlined">arrow_back_ios_new</span>
                     </button>
+                </div>
+                
             </form>
 
             <script>

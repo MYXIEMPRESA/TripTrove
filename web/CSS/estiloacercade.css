@@ -25,10 +25,11 @@ header{
     transition: 0.9s;
     padding: 40px 100px;
     z-index: 100000;
+    font-size: 18px;
   }
 
   header.sticky{
-    padding: 5px 100px;
+    padding: 8px 100px;
     background: #000000;
   }
 
@@ -37,7 +38,7 @@ header{
     color:#ffffff;
   }
 
-header .logo{
+  header .logo{
     position: relative;
     font-weight: 700;
     color: #ffffff;
@@ -59,39 +60,87 @@ header .logo{
     list-style: none;
   }
 
-  header ul li a{
+  header ul li a {
     position: relative;
     margin: 0 15px;
     text-decoration: none;
-    color: #ffffff;
+    color: rgb(255, 255, 255);
     letter-spacing: 2px;
-    font-weight: 500px;
+    font-weight: 500;
     transition: 0.5s;
-  }
+    overflow: hidden;
+}
 
+header ul li a::before,
+header ul li a::after {
+    content: "";
+    position: absolute;
+    width: 120%; /* Ajusta el ancho del subrayado aquí */
+    height: 3px; /* Ajusta el grosor del subrayado aquí */
+    background-color: #fafafa;
+    z-index: -1;
+    transition: transform 0.8s;
+    border-radius: 5px; /* Ajusta el radio del borde aquí */
+}
+
+header ul li a::before {
+    top: 0;
+    left: -10%; /* Ajusta el desplazamiento del subrayado aquí */
+    transform: scaleX(0);
+    transform-origin: right;
+}
+
+header ul li a::after {
+    bottom: 0;
+    right: -10%; /* Ajusta el desplazamiento del subrayado aquí */
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+header ul li a:hover {
+    color: #ffffff;
+}
+
+header ul li a:hover::before,
+header ul li a:hover::after {
+    transform: scaleX(1);
+    transform-origin: center;
+}
+
+
+.page-container {
+    position: relative;
+}
 
 .parallax.section1 {
     position: relative;
-    background-image: url("img/acercadefondo.jpg");
+    background-image: url("fotitos/fondito.jpg");
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
-    height: 90vh; /* Reducido a la mitad de la altura original */
+    height: 92vh;
 }
 
 .parallax.section1 .parallax-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 50%; /* Cubre la mitad izquierda de la sección Parallax */
-    height: 100%; /* Cubre toda la altura de la sección Parallax */
-    background-color: rgba(0, 0, 0, 0.5);
+    top: 0; /* Ajusta la altura desde la parte superior según tu preferencia */
+    left: 0; /* Posiciona la capa overlay a la izquierda */
+    width: 40%; /* Ajusta el ancho según tu preferencia */
+    height: 50vh; /* Ajusta la altura según tu preferencia */
+    background-color: rgba(0, 0, 0, 0.233);
     z-index: 2;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border-radius: 20px; /* Ajusta el radio del borde según tu preferencia */
+    padding: 60px; /* Agrega relleno según tu preferencia */
+    margin-top: 160px;
+    margin-left: 30px;
+    backdrop-filter: blur(12px);
 }
+
+
 
 .parallax.section1 .parallax-overlay h1,
 .parallax.section1 .parallax-overlay p {
@@ -236,65 +285,55 @@ header .logo{
     text-align: justify;
 }
 
-/* Estilo de la nueva sección */
-.black-section4 {
-    display: flex;
-    background-color: black;
+/* Agrega estilos para la sección de contacto */
+.contact-section {
+    background-color: rgb(32, 32, 32);
     color: white;
     padding: 50px;
-    align-items: center;
-    justify-content: center; /* Centramos el contenido de la sección */
-    height: 80vh; /* Ajusta la altura de la sección según tus preferencias */
-  }
-  
-  .container {
-    position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .container .card {
-    position: absolute;
-    width: 240px;
-    height: 320px;
-    border-radius: 8px;
-    background: #5e5cfc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: rgba(0, 0, 0, 0);
-    font-size: 8em;
-    font-weight: 700;
-    border: 10px solid rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    transition: 0.5s;
-    transform-origin: 50% 50%; /* Centra la transformación */
-    filter: hue-rotate(calc(var(--i) * 50deg));
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
-  }
-
-  .container p {
-    font-size: 19px;
-    align-items: center;
     text-align: center;
-  }
-  
-  .container:hover .card {
-    transform: rotate(calc(var(--i) * 5deg)) translate(calc(var(--i) * 120px), -50px);
-    color: rgba(0, 0, 0, 0.25);
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.25);
-  }
+    height: 30vh; /* Cambiado a auto para adaptarse al contenido */
+}
 
-  .container:active .card {
-    background: #333;
-  }
-  
-  .container .card:active {
-    translate: calc(var(--i) * 20px), -50px;
-    z-index: 100;
-    background: #5e5cfc;
-  }
-  
-  
+.company-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    flex-wrap: wrap; /* Añadido para manejar el contenido en dispositivos pequeños */
+}
+
+.company-info img {
+    max-width: 200px; 
+    margin-right: 35px;
+    border-radius: 7px;
+    margin-bottom: 10px;
+}
+
+.text-info,
+.Myxi-text-info {
+    flex: 1;
+    max-width: 60%; /* Ajusta según sea necesario */
+}
+
+.team-member,
+.Myxi-text-info {
+    margin-top: 5px;
+    margin-left: 65px;
+}
+
+.team-member h3,
+.Myxi-text-info h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.team-member p,
+.Myxi-text-info p {
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+
+.team-member a,
+.Myxi-text-info a {
+    color: #ffffff;
+}

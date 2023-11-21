@@ -9,7 +9,7 @@
     text-decoration: none;
   }
 
-header{
+  header{
     position: fixed;
     top:0;
     left: 0;
@@ -20,6 +20,7 @@ header{
     transition: 0.9s;
     padding: 40px 100px;
     z-index: 100000;
+    font-size: 18px;
   }
 
   header.sticky{
@@ -54,21 +55,58 @@ header{
     list-style: none;
   }
 
-  header ul li a{
+  header ul li a {
     position: relative;
     margin: 0 15px;
     text-decoration: none;
     color: rgb(0, 0, 0);
     letter-spacing: 2px;
-    font-weight: 500px;
+    font-weight: 500;
     transition: 0.5s;
-  }
+    overflow: hidden;
+}
+
+header ul li a::before,
+header ul li a::after {
+    content: "";
+    position: absolute;
+    width: 120%; /* Ajusta el ancho del subrayado aquí */
+    height: 3px; /* Ajusta el grosor del subrayado aquí */
+    background-color: #000;
+    z-index: -1;
+    transition: transform 0.8s;
+    border-radius: 5px; /* Ajusta el radio del borde aquí */
+}
+
+header ul li a::before {
+    top: 0;
+    left: -10%; /* Ajusta el desplazamiento del subrayado aquí */
+    transform: scaleX(0);
+    transform-origin: right;
+}
+
+header ul li a::after {
+    bottom: 0;
+    right: -10%; /* Ajusta el desplazamiento del subrayado aquí */
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+header ul li a:hover {
+    color: #000000;
+}
+
+header ul li a:hover::before,
+header ul li a:hover::after {
+    transform: scaleX(1);
+    transform-origin: center;
+}
 
 .parallax {
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
   }
 
@@ -98,4 +136,61 @@ header{
 }
 .multiText {
   font-size: 35px;
+}
+
+/* Agrega estilos para la sección de contacto */
+.contact-section {
+  background-color: rgb(32, 32, 32);
+  color: white;
+  padding: 50px;
+  text-align: center;
+  height: 30vh; /* Cambiado a auto para adaptarse al contenido */
+}
+
+.company-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  flex-wrap: wrap; /* Añadido para manejar el contenido en dispositivos pequeños */
+}
+
+.company-info img {
+  max-width: 200px; 
+  margin-right: 35px;
+  border-radius: 7px;
+  margin-bottom: 10px;
+}
+
+.text-info,
+.Myxi-text-info {
+  flex: 1;
+  max-width: 60%; /* Ajusta según sea necesario */
+}
+
+.team-member,
+.Myxi-text-info {
+  margin-top: 5px;
+  margin-left: 65px;
+}
+
+.text-info h2,
+.team-member h3,
+.Myxi-text-info h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.text-info p,
+.team-member p,
+.Myxi-text-info p {
+  font-size: 15px;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+.team-member a,
+.Myxi-text-info a {
+  color: #ffffff;
 }
