@@ -1,6 +1,7 @@
 drop database if exists triptrove;
 create database triptrove;
 use triptrove;
+
 create table usuario(
 	idUsuario int auto_increment primary key, 
 	usuario varchar(30),
@@ -49,13 +50,13 @@ create table caracterisitcaEspe(
 
 create table ubicacion(
 	idUbicacion int auto_increment primary key,
-    nombreUbicacion varchar(10),
-    longitud float(10),
-    latitud float(10),
-    costoFig varchar(10),
-	tiempoFig varchar(10),
-    puntuacionProm float(2),
-    descripcion varchar(50)
+    nombreUbicacion varchar(50),
+    longitud float(50),
+    latitud float(50),
+    costoFig varchar(50),
+	tiempoFig varchar(50),
+    puntuacionProm float(50),
+    descripcion varchar(100)
 );
 
 create table caracterisitcaEspeUbicaciones(
