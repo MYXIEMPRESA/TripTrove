@@ -41,7 +41,7 @@ create table caracteristicas(
     foreign key (idUsuario) references usuario(idUsuario)
 );
 
-create table caracterisitcaEspe(
+create table caracteristicaEsp(
 	idCaracEsp int auto_increment primary key,
     idCaracteristicas int,
     tipoCaract varchar(30),
@@ -59,7 +59,7 @@ create table ubicacion(
     descripcion varchar(100)
 );
 
-create table caracterisitcaEspeUbicaciones(
+create table caracteristicaEspeUbicaciones(
 	idCaracEspUbic int auto_increment primary key,
     idUbicacion int,
     tipoCaract varchar(30),

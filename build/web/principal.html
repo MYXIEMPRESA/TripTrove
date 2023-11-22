@@ -20,21 +20,28 @@
                 padding: 0;
                 display: flex;
                 flex-wrap: wrap;
+                X
                 justify-content: space-around;
             }
 
-            li {
+            button {
                 border: 1px solid #ddd;
                 margin: 10px;
                 padding: 15px;
                 border-radius: 8px;
                 background-color: #f9f9f9;
-                flex: 0 1 calc(30% - 20px); /* Ajusta el porcentaje según tus necesidades */
+                flex: 0 1 calc(30% - 20px);
                 box-sizing: border-box;
+                cursor: pointer;
+                transition: background-color 0.3s;
+                text-align: left;
             }
 
-            /* Estilos adicionales para las imágenes dentro del script */
-            #ubicacionesList img {
+            button:hover {
+                background-color: #e0e0e0;
+            }
+
+            button img {
                 max-width: 300px;
                 max-height: 300px;
                 height: auto;
@@ -210,7 +217,7 @@
         <h1>Ubicaciones Recomendadas:</h1>
 
         <!-- Lista para mostrar los detalles de las ubicaciones -->
-        <ul id="ubicacionesList"></ul>
+        <><ul id="ubicacionesList"></ul>
 
         <div id="noRecomendaciones" style="text-align: center; margin-top: 20px; font-size: 18px;">
             <img src="CSS/recomendaciones/caratriste.png" alt="Cara Triste" style="width: 50px;">
@@ -249,23 +256,34 @@
             var descripcionArray = descripcionParam ? descripcionParam.split(',') : [];
 
             // Mostrar los detalles de las ubicaciones en la lista
-            var ubicacionesList = document.getElementById('ubicacionesList');
-            for (var i = 0; i < ubicacionesNombresArray.length; i++) {
-                var li = document.createElement('li');
-                li.innerHTML = "<strong>Nombre:</strong> " + ubicacionesNombresArray[i] + "<br>" +
-                        "<strong>Costo:</strong> " + costoFigArray[i] + "<br>" +
-                        "<strong>Tiempo:</strong> " + tiempoFigArray[i] + "<br>" +
-                        "<strong>Puntuación Promedio:</strong> " + puntuacionPromArray[i] + "<br>" +
-                        "<strong>Descripción:</strong> " + descripcionArray[i] + "<br><br>";
+            document.addEventListener('DOMContentLoaded', function () {
+                var ubicacionesList = document.getElementById('ubicacionesList');
 
-                // Agregar imagen con el nombre de la ubicación
-                var img = document.createElement('img');
-                img.src = 'CSS/recomendaciones/' + ubicacionesNombresArray[i].toLowerCase().replace(/\s/g, '') + '.jpg';
-                img.alt = ubicacionesNombresArray[i] + ' Image';
-                li.appendChild(img);
+                for (var i = 0; i < ubicacionesNombresArray.length; i++) {
+                    // Crear un elemento de botón en lugar de un elemento de lista
+                    var button = document.createElement('button');
+                    button.innerHTML = "<strong>Nombre:</strong> " + ubicacionesNombresArray[i] + "<br>" +
+                            "<strong>Costo:</strong> " + costoFigArray[i] + "<br>" +
+                            "<strong>Tiempo:</strong> " + tiempoFigArray[i] + "<br>" +
+                            "<strong>Puntuación Promedio:</strong> " + puntuacionPromArray[i] + "<br>" +
+                            "<strong>Descripción:</strong> " + descripcionArray[i] + "<br><br>";
 
-                ubicacionesList.appendChild(li);
-            }
+                    // Agregar imagen con el nombre de la ubicación
+                    var img = document.createElement('img');
+                    img.src = 'CSS/recomendaciones/' + ubicacionesNombresArray[i].toLowerCase().replace(/\s/g, '') + '.jpg';
+                    img.alt = ubicacionesNombresArray[i] + ' Image';
+                    button.appendChild(img);
+
+                    // Agregar evento de clic para redirigir al HTML correspondiente
+                    button.addEventListener('click', function (locationName) {
+                        return function () {
+                            window.location.href = 'ubicaciones/' + locationName + '.html';
+                        };
+                    }(ubicacionesNombresArray[i]));
+
+                    ubicacionesList.appendChild(button);
+                }
+            });
         </script>
     </body>
 </html>
