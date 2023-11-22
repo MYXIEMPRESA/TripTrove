@@ -1,31 +1,95 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-  <title>Mapa</title>
-  <link rel="icon" href="CSS/fotitos/logo.png" type="image/png">
-  <link rel="stylesheet" type="text/css" href="CSS/mapa.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Mapa</title>
+    <style>
+        #map {
+            height: 500px;
+        }
+
+        #ruta-info {
+            margin-top: 10px;
+        }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXhXtV1rMD-5y15llNS1fFMl8u8TvVBoo&callback=initMap" async defer></script>
 </head>
 <body>
-  <div id="container">
-    <div id="route-options">
-      <h2>Opciones de Ruta</h2>
-      <label for="mode">Modo de transporte:</label>
-      <select id="mode">
-        <option value="driving">Conducir</option>
-        <option value="walking">Caminar</option>
-        <option value="transit">Transporte público</option>
-        <option value="bicycling">Bicicleta</option>
-      </select>
-      <h3>Lugares Predeterminados</h3>
-      <button id="route-chapultepec">Bosque de Chapultepec</button>
-      <button id="route-zocalo">Zócalo CDMX</button>
-      <button id="route-aeropuerto">Aeropuerto CDMX</button>
-      <button id="route-xochimilco">Xochimilco</button>
-    </div>
-    <div id="map-container"></div>
-  </div>
-  <script async
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXhXtV1rMD-5y15llNS1fFMl8u8TvVBoo&libraries=places&callback=initMap">
-</script>  <script src="js/mapajava.js"></script>
+
+<div id="map"></div>
+<div id="ruta-info"></div>
+<button onclick="iniciarRuta()">Iniciar Ruta</button>
+
+<script>
+    var lugares = [
+        { nombre: "Centro Histórico de la CDMX", latitud: 19.4326, longitud: -99.1332 },
+        { nombre: "Museo de Frida Kahlo", latitud: 19.3553, longitud: -99.1624 },
+        { nombre: "Zoológico de Chapultepec", latitud: 19.4144, longitud: -99.1817 },
+        { nombre: "Bosque de Chapultepec", latitud: 19.4203, longitud: -99.1815 },
+        { nombre: "Xochimilco", latitud: 19.2460, longitud: -99.0851 },
+        { nombre: "Museo Nacional de Antropología", latitud: 19.4269, longitud: -99.1871 },
+        { nombre: "Museo Soumaya", latitud: 19.4401, longitud: -99.2047 },
+        { nombre: "Parque México", latitud: 19.4101, longitud: -99.1726 }
+    ];
+
+    var directionsService, directionsRenderer;
+
+    function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+            center: { lat: 19.4326, lng: -99.1332 },
+            zoom: 12
+        });
+
+        directionsService = new google.maps.DirectionsService();
+        directionsRenderer = new google.maps.DirectionsRenderer({ suppressMarkers: true, panel: document.getElementById('ruta-info') });
+        directionsRenderer.setMap(map);
+
+        lugares.forEach(function (lugar) {
+            var marker = new google.maps.Marker({
+                position: { lat: lugar.latitud, lng: lugar.longitud },
+                map: map,
+                title: lugar.nombre
+            });
+
+            var infowindow = new google.maps.InfoWindow({
+                content: lugar.nombre
+            });
+
+            marker.addListener('click', function () {
+                infowindow.open(map, marker);
+                document.getElementById('ruta-info').innerHTML = ''; // Limpiar la información de la ruta al hacer clic en un nuevo marcador
+                calculateAndDisplayRoute({ lat: lugar.latitud, lng: lugar.longitud });
+            });
+        });
+    }
+
+    function calculateAndDisplayRoute(destination) {
+        var origin = new google.maps.LatLng(19.4326, -99.1332);
+
+        var request = {
+            origin: origin,
+            destination: destination,
+            travelMode: 'DRIVING'
+        };
+
+        directionsService.route(request, function (result, status) {
+            if (status == 'OK') {
+                directionsRenderer.setDirections(result);
+            } else {
+                window.alert('No se pudo calcular la ruta: ' + status);
+            }
+        });
+    }
+
+    function iniciarRuta() {
+       
+        var puntoA = lugares[0];
+        var puntoB = lugares[1]; 
+
+        calculateAndDisplayRoute({ lat: puntoB.latitud, lng: puntoB.longitud });
+    }
+</script>
+
 </body>
 </html>

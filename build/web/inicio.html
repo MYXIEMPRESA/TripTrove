@@ -19,7 +19,7 @@
                     <input type="text" name="usuario" id="usuario" required>
                     <i class='bx bxs-user'></i>
                 </div>
-                
+
                 <div class="input-box">
                     <label for="usuario">Contraseña</label>
                     <input type="password" name="contra"  required>
@@ -27,45 +27,43 @@
                 </div>
 
                 <button type="submit" class="btn">Iniciar sesión</button>
-                
+
                 <div class="register-link">
                     <p>No tienes una cuenta? <a href="registro.html">Registro</a></p>
                 </div>
                 <br><br>
-                    <button class="back-button" onclick="window.location.href='index.html'">
-                        <span class="material-symbols-outlined">arrow_back_ios_new</span>
-                    </button>
-                </div>
-                
-            </form>
-
-            <script>
-                // Obtener todos los campos de entrada
-    const inputFields = document.querySelectorAll('.input-box input');
-    
-    // Agregar un evento de enfoque (focus) y desenfoque (blur) a cada campo de entrada
-    inputFields.forEach(inputField => {
-        inputField.addEventListener('focus', function () {
-            // Obtener la etiqueta asociada
-            const label = this.previousElementSibling;
-    
-            // Agregar una clase CSS para mover la etiqueta arriba
-            label.classList.add('active-label');
-        });
-    
-        inputField.addEventListener('blur', function () {
-            // Obtener la etiqueta asociada
-            const label = this.previousElementSibling;
-    
-            // Si el campo está vacío, quitar la clase para volver a la posición original
-            if (this.value === '') {
-                label.classList.remove('active-label');
-            }
-        });
-    });
-    
-            </script>
+                <button class="back-button" onclick="window.location.href = 'index.html'">
+                    <span class="material-symbols-outlined">arrow_back_ios_new</span>
+                </button>
         </div>
-    </body>
+    </form>
+    <script>
+        // Obtener todos los campos de entrada
+        const inputFields = document.querySelectorAll('.input-box input');
+
+        // Agregar un evento de enfoque (focus) y desenfoque (blur) a cada campo de entrada
+        inputFields.forEach(inputField => {
+            inputField.addEventListener('focus', function () {
+                // Obtener la etiqueta asociada
+                const label = this.previousElementSibling;
+
+                // Agregar una clase CSS para mover la etiqueta arriba
+                label.classList.add('active-label');
+            });
+
+            inputField.addEventListener('blur', function () {
+                // Obtener la etiqueta asociada
+                const label = this.previousElementSibling;
+
+                // Si el campo está vacío, quitar la clase para volver a la posición original
+                if (this.value === '') {
+                    label.classList.remove('active-label');
+                }
+            });
+        });
+
+    </script>
+</div>
+</body>
 </html>
 
