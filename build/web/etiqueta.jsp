@@ -94,7 +94,7 @@
                 }
 
                 // Insertar en la tabla caracterisitcaEspe solo los checkboxes seleccionados
-                String insertCaracterisitcaEspeQuery = "INSERT INTO caracterisitcaEspe (idCaracteristicas, tipoCaract) VALUES (?, ?)";
+                String insertCaracterisitcaEspeQuery = "INSERT INTO caracteristicaEspe (idCaracteristicas, tipoCaract) VALUES (?, ?)";
                 pstCaracEspeciales = cnx.prepareStatement(insertCaracterisitcaEspeQuery);
 
                 // Insertar para cada tipo de característica especial solo si está seleccionada
