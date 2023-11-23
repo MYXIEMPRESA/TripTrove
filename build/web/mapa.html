@@ -5,31 +5,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Mi Mapa</title>
         <style>
-            body {
-                margin: 0;
-                padding: 0;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
-
             #map {
-                height: 100vh;
-                width: 70%;
+                height: 500px;
             }
 
             #ruta-info {
-                height: 100vh;
-                width: 30%;
-                overflow: auto;
-                padding: 10px;
-            }
-
-            #boton-container {
-                width: 30%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
+                margin-top: 10px;
             }
         </style>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXhXtV1rMD-5y15llNS1fFMl8u8TvVBoo&callback=initMap" async defer></script>
@@ -38,60 +19,53 @@
 
         <div id="map"></div>
         <div id="ruta-info"></div>
-        <div id="boton-container">
-            <button onclick="iniciarRuta()">Iniciar Ruta</button>
-        </div>
+        <button onclick="iniciarRuta()">Iniciar Ruta</button>
 
         <script>
+            var lugares = [
+                {nombre: "Centro Histórico de la CDMX", latitud: 19.4326, longitud: -99.1332},
+                {nombre: "Museo de Frida Kahlo", latitud: 19.3553, longitud: -99.1624},
+                {nombre: "Zoológico de Chapultepec", latitud: 19.4144, longitud: -99.1817},
+                {nombre: "Bosque de Chapultepec", latitud: 19.4203, longitud: -99.1815},
+                {nombre: "Xochimilco", latitud: 19.2460, longitud: -99.0851},
+                {nombre: "Museo Nacional de Antropología", latitud: 19.4269, longitud: -99.1871},
+                {nombre: "Museo Soumaya", latitud: 19.4401, longitud: -99.2047},
+                {nombre: "Parque México", latitud: 19.4101, longitud: -99.1726}
+            ];
+
             var directionsService, directionsRenderer;
-            var ubicaciones = [];
-
-            function obtenerUbicaciones() {
-                fetch('http://localhost:3000/ubicaciones')
-                        .then(response => response.json())
-                        .then(data => {
-                            ubicaciones = data;
-                            initMap();
-                        })
-                        .catch(error => console.error('Error al obtener ubicaciones:', error));
-            }
-
-            obtenerUbicaciones();
 
             function initMap() {
-                var ciudadDeMexicoBounds = new google.maps.LatLngBounds(
-                        new google.maps.LatLng(19.201389, -99.379209),
-                        new google.maps.LatLng(19.573611, -98.893048)
-                        );
-
                 var map = new google.maps.Map(document.getElementById('map'), {
                     center: {lat: 19.4326, lng: -99.1332},
-                    zoom: 12,
-                    restriction: {
-                        latLngBounds: ciudadDeMexicoBounds,
-                        strictBounds: false,
-                    }
+                    zoom: 12
+>>>>>>> 9c97e71a0dafdbccd12c4d567d476aa99ba36e0a
                 });
 
                 directionsService = new google.maps.DirectionsService();
                 directionsRenderer = new google.maps.DirectionsRenderer({suppressMarkers: true, panel: document.getElementById('ruta-info')});
                 directionsRenderer.setMap(map);
 
-                ubicaciones.forEach(function (ubicacion) {
+=======
+                lugares.forEach(function (lugar) {
                     var marker = new google.maps.Marker({
-                        position: {lat: ubicacion.latitud, lng: ubicacion.longitud},
+                        position: {lat: lugar.latitud, lng: lugar.longitud},
                         map: map,
-                        title: ubicacion.nombre
+                        title: lugar.nombre
                     });
 
                     var infowindow = new google.maps.InfoWindow({
-                        content: ubicacion.nombre
+                        content: lugar.nombre
+>>>>>>> 9c97e71a0dafdbccd12c4d567d476aa99ba36e0a
                     });
 
                     marker.addListener('click', function () {
                         infowindow.open(map, marker);
-                        document.getElementById('ruta-info').innerHTML = '';
-                        calculateAndDisplayRoute({lat: ubicacion.latitud, lng: ubicacion.longitud});
+
+=======
+                        document.getElementById('ruta-info').innerHTML = ''; // Limpiar la información de la ruta al hacer clic en un nuevo marcador
+                        calculateAndDisplayRoute({lat: lugar.latitud, lng: lugar.longitud});
+>>>>>>> 9c97e71a0dafdbccd12c4d567d476aa99ba36e0a
                     });
                 });
             }
@@ -115,10 +89,14 @@
             }
 
             function iniciarRuta() {
-                var puntoA = ubicaciones[0];
-                var puntoB = ubicaciones[1];
+
+                var puntoA = lugares[0];
+                var puntoB = lugares[1];
+
                 calculateAndDisplayRoute({lat: puntoB.latitud, lng: puntoB.longitud});
             }
         </script>
+
     </body>
 </html>
+
