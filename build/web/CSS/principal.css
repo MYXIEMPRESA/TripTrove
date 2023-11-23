@@ -8,20 +8,99 @@ body {
     background-color: rgba(252, 255, 224, 0.993);
 }
 
-.navbar {
-    background-color: rgba(241, 191, 99, 0.24);
-    color: #5a5a5a88;
-    padding: 15px;
+header{
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: 0.9s;
+    padding: 40px 100px;
+    z-index: 100000;
+    font-size: 18px;
+  }
+
+  header.sticky{
+    padding: 8px 100px;
+    background: #000000;
+  }
+
+    header.sticky .logo,
+    header.sticky ul li a{
+    color:#ffffff;
+  }
+
+  header .logo{
+    position: relative;
+    font-weight: 700;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 2em;
+    letter-spacing: 2px;
+    transition: 0.6s;
+  }
+
+  header ul {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  header ul li{
+    position: relative;
+    list-style: none;
+  }
+
+  header ul li a {
+    position: relative;
+    margin: 0 15px;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    letter-spacing: 2px;
+    font-weight: 500;
+    transition: 0.5s;
+    overflow: hidden;
 }
 
-.navbar h2 {
-    margin: 0;
-    font-size: 24px;
-    font-family: 'YourNewFont', sans-serif; /* Cambia la fuente de "Trip Trove" */
+header ul li a::before,
+header ul li a::after {
+    content: "";
+    position: absolute;
+    width: 120%; /* Ajusta el ancho del subrayado aquí */
+    height: 3px; /* Ajusta el grosor del subrayado aquí */
+    background-color: #fafafa;
+    z-index: -1;
+    transition: transform 0.8s;
+    border-radius: 5px; /* Ajusta el radio del borde aquí */
 }
+
+header ul li a::before {
+    top: 0;
+    left: -10%; /* Ajusta el desplazamiento del subrayado aquí */
+    transform: scaleX(0);
+    transform-origin: right;
+}
+
+header ul li a::after {
+    bottom: 0;
+    right: -10%; /* Ajusta el desplazamiento del subrayado aquí */
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+header ul li a:hover {
+    color: #ffffff;
+}
+
+header ul li a:hover::before,
+header ul li a:hover::after {
+    transform: scaleX(1);
+    transform-origin: center;
+}
+
 
 .search-bar {
     display: flex;
@@ -214,6 +293,10 @@ body {
     max-width: 100px;
     scale: 0.8;
     filter: grayscale(1);
+    max-height: 200px;
+    min-height: 200px;
+    max-width: 200px;
+    min-width: 200px;
 }
 
 .imgbx img:hover{

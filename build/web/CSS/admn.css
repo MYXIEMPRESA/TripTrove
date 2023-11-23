@@ -1,0 +1,170 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+header{
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.9s;
+    padding: 40px 100px;
+    z-index: 100000;
+    font-size: 18px;
+  }
+
+  header.sticky{
+    padding: 8px 100px;
+    background: #000000;
+  }
+
+    header.sticky .logo,
+    header.sticky ul li a{
+    color:#ffffff;
+  }
+
+  header .logo{
+    position: relative;
+    font-weight: 700;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 2em;
+    letter-spacing: 2px;
+    transition: 0.6s;
+  }
+
+  header ul {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  header ul li{
+    position: relative;
+    list-style: none;
+  }
+
+  header ul li a {
+    position: relative;
+    margin: 0 15px;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    letter-spacing: 2px;
+    font-weight: 500;
+    transition: 0.5s;
+    overflow: hidden;
+}
+
+header ul li a::before,
+header ul li a::after {
+    content: "";
+    position: absolute;
+    width: 120%; /* Ajusta el ancho del subrayado aquí */
+    height: 3px; /* Ajusta el grosor del subrayado aquí */
+    background-color: #fafafa;
+    z-index: -1;
+    transition: transform 0.8s;
+    border-radius: 5px; /* Ajusta el radio del borde aquí */
+}
+
+header ul li a::before {
+    top: 0;
+    left: -10%; /* Ajusta el desplazamiento del subrayado aquí */
+    transform: scaleX(0);
+    transform-origin: right;
+}
+
+header ul li a::after {
+    bottom: 0;
+    right: -10%; /* Ajusta el desplazamiento del subrayado aquí */
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+header ul li a:hover {
+    color: #ffffff;
+}
+
+header ul li a:hover::before,
+header ul li a:hover::after {
+    transform: scaleX(1);
+    transform-origin: center;
+}
+
+
+.admin-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-image: url("img/fondito.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.section-overlay {
+    width: 570px;
+    background: rgba(0, 0, 0, 0.363);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.418);
+    color: #fff;
+    border-radius: 35px;
+    padding: 30px 40px;
+    text-align: center;
+    align-items: center;
+}
+
+.section-overlay h1 {
+    font-size: 36px;
+    text-align: center;
+}
+
+.section-content{
+    min-height: 100vh;
+}
+
+/* ... Tu CSS existente ... */
+
+.admin-subsection {
+    background-color: #000;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 20px 0;
+    text-align: center;
+    min-height: 60vh;
+}
+
+.admin-subsection h2 {
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.admin-subsection .section-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.admin-subsection button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #fff;
+    color: #000;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.admin-subsection button:hover {
+    background-color: #333;
+    color: #fff;
+}

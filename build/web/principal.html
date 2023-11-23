@@ -20,7 +20,7 @@
                 padding: 0;
                 display: flex;
                 flex-wrap: wrap;
-                X
+
                 justify-content: space-around;
             }
 
@@ -53,18 +53,19 @@
         </style>
     </head>
     <body>
-        <nav class="navbar">
-            <h2>Trip Trove</h2>
-            <div class="search-bar">
-                <input type="text" placeholder="¿A dónde vamos?" class="search-input">
-                <button class="search-button"><i class="material-symbols-outlined">search</i></button>
-            </div>
-            <div class="nav-buttons">
-                <a href="jsp/cerrarsesion.jsp"><button class="logout-button">Cerrar Sesión</button></a>
-                <a href="mapa.html"><button class="location-button"><span class="material-symbols-outlined">location_on</span></button></a>
-                <button class="user-button"><span class="material-symbols-outlined">person</span></button>
-            </div>
-        </nav>
+
+        <header>
+            <a href="#" class="logo">TripTrove </a>
+            <input type="text" placeholder="¿A dónde vamos?" class="search-input">
+            
+            <ul>
+              <li><a href="jsp/cerrarsesion.jsp">CERRAR SESION</a></li>
+              <li><a href="mapa.html"><button class="location-button"><span class="material-symbols-outlined">location_on</span></button></a></li>
+              <li><a href=""><button class="user-button"><span class="material-symbols-outlined">person</span></button></a></li>
+            </ul>
+          </header>
+
+
 
 
         <h2 class="titulito">LUGARES POPULARES</h2>
@@ -169,26 +170,7 @@
 
 
         <div class="desliza">
-            <div class="scroll" style="--t:20s">
-                <div>
-                    <span>viaja</span>
-                    <span>descubre</span>
-                    <span>experimenta</span>
-                    <span>vive</span>
-                    <span>encuentrate</span>
-                    <span>conecta</span>
-                    <span>explora</span>>
-                </div>
-                <div>
-                    <span>viaja</span>
-                    <span>descubre</span>
-                    <span>experimenta</span>
-                    <span>vive</span>
-                    <span>encuentrate</span>
-                    <span>conecta</span>
-                    <span>explora</span>
-                </div>
-            </div>
+            
             <div class="scroll imgbx" style="--t:25s">
                 <div>
                     <img src="CSS/img/principal l.jpg">
@@ -224,7 +206,13 @@
             <p>¡Oh no! Ya no tenemos más recomendaciones para ti.</p>
         </div>
 
-
+        <script type = "text/javascript">
+            window.addEventListener("scroll",function(){
+                var header = document.querySelector("header");
+                header.classList.toggle("sticky",window.scrollY > 0);
+            })
+        </script>
+        
         <script>
             // Función para obtener parámetros de consulta de la URL
             function getParameterByName(name, url) {
