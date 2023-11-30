@@ -34,7 +34,7 @@
             session.setAttribute("correo", correo);
             session.setAttribute("contra", contra);
 
-            request.getRequestDispatcher("etiqueta.html").forward(request, response);
+            response.sendRedirect("etiqueta.html");
         } else if (request.getParameter("subir") != null) {
 
             // Obtener valores de los selects
@@ -94,7 +94,7 @@
                 }
 
                 // Insertar en la tabla caracterisitcaEspe solo los checkboxes seleccionados
-                String insertCaracterisitcaEspeQuery = "INSERT INTO caracteristicaEspe (idCaracteristicas, tipoCaract) VALUES (?, ?)";
+                String insertCaracterisitcaEspeQuery = "INSERT INTO caracteristicaEsp(idCaracteristicas, tipoCaract) VALUES (?, ?)";
                 pstCaracEspeciales = cnx.prepareStatement(insertCaracterisitcaEspeQuery);
 
                 // Insertar para cada tipo de característica especial solo si está seleccionada

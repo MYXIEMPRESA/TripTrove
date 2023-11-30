@@ -16,7 +16,7 @@
     String contra = request.getParameter("contra");
 
     if ("administrador".equals(idUsuario)) {
-    response.sendRedirect("administrador.html");
+        response.sendRedirect("administrador.html");
     } else {
 
         Connection cnx = null;
@@ -81,8 +81,19 @@
                     ubicacionesDescripciones.add(rs.getString("descripcion"));
                 }
 
-                // Ordena las ubicaciones por frecuencia (de mayor a menor)
-                Collections.sort(ubicacionesNombres, ( a,   b) -> ubicacionFrecuencia.get(b) - ubicacionFrecuencia.get(a));
+                for (int i = 0; i < ubicacionesNombres.size() - 1; i++) {
+                    for (int j = i + 1; j < ubicacionesNombres.size(); j++) {
+                        String ubicacionI = ubicacionesNombres.get(i);
+                        String ubicacionJ = ubicacionesNombres.get(j);
+
+                        if (ubicacionFrecuencia.get(ubicacionJ) > ubicacionFrecuencia.get(ubicacionI)) {
+                            // Intercambia las ubicaciones
+                            String temp = ubicacionI;
+                            ubicacionesNombres.set(i, ubicacionJ);
+                            ubicacionesNombres.set(j, temp);
+                        }
+                    }
+                }
 
                 // Eliminar duplicados manteniendo el orden
                 List<String> ubicacionesNombresUnicas = new ArrayList<>(new LinkedHashSet<>(ubicacionesNombres));
