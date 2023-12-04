@@ -20,21 +20,39 @@
     <%
 
         // Obtener valores de la sesión si ya existen
-        String usuarioo = (String) session.getAttribute("usuario");
+        String usuario = (String) session.getAttribute("usuario");
         String correo = (String) session.getAttribute("correo");
         String contra = (String) session.getAttribute("contra");
+        Connection cnx = null;
 
         if (request.getParameter("datos") != null) {
-            usuarioo = request.getParameter("usuario");
+            usuario = request.getParameter("usuario");
             correo = request.getParameter("correo");
             contra = request.getParameter("contra");
 
-            // Almacenar valores en la sesión
-            session.setAttribute("usuario", usuarioo);
-            session.setAttribute("correo", correo);
-            session.setAttribute("contra", contra);
+            
 
-            response.sendRedirect("etiqueta.html");
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/triptrove?autoReconnect=true&useSSL=false", "root", "n0m3l0");
+
+            String checkUserEmailQuery = "SELECT COUNT(*) AS count FROM usuario WHERE usuario = ? OR correo = ?";
+            try (PreparedStatement pstCheckUserEmail = cnx.prepareStatement(checkUserEmailQuery)) {
+                pstCheckUserEmail.setString(1, usuario);
+                pstCheckUserEmail.setString(2, correo);
+                ResultSet resultSet = pstCheckUserEmail.executeQuery();
+                if (resultSet.next() && resultSet.getInt("count") > 0) {
+                    // User or email already exists, handle it (e.g., display an error message)
+                    response.sendRedirect("registro.html");
+                } else {
+                    // Almacenar valores en la sesión
+                    session.setAttribute("usuario", usuario);
+                    session.setAttribute("correo", correo);
+                    session.setAttribute("contra", contra);
+                    response.sendRedirect("etiqueta.html");
+                }
+            } catch (SQLException e) {
+                out.print(e.toString());
+            }
         } else if (request.getParameter("subir") != null) {
 
             // Obtener valores de los selects
@@ -50,7 +68,6 @@
             String museos = request.getParameter("museos");
             String parques = request.getParameter("parques");
 
-            Connection cnx = null;
             PreparedStatement pstUsuario = null;
             PreparedStatement pstCaracteristicas = null;
             PreparedStatement pstCaracEspeciales = null;
@@ -60,19 +77,19 @@
                 cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/triptrove?autoReconnect=true&useSSL=false", "root", "n0m3l0");
 
                 // Insertar en la tabla usuario
-                String insertUsuarioQuery = "INSERT INTO usuario (usuario, correo, contra) VALUES (?, ?, ?)";
-                pstUsuario = cnx.prepareStatement(insertUsuarioQuery);
-                pstUsuario.setString(1, usuarioo);
+                String insertUsuarioQuery = "INSERT INTO usuario (usuario, correo, contra, idRol) VALUES (?, ?, ?, ?)";
+                pstUsuario = cnx.prepareStatement(insertUsuarioQuery, Statement.RETURN_GENERATED_KEYS);
+                pstUsuario.setString(1, usuario);
                 pstUsuario.setString(2, correo);
                 pstUsuario.setString(3, contra);
+                pstUsuario.setInt(4, 3); // 3 es el número de idRol que deseas asignar
                 pstUsuario.executeUpdate();
 
                 // Obtener el ID del usuario recién insertado
                 int idUsuario = 0;
-                String selectIdQuery = "SELECT LAST_INSERT_ID() AS idUsuario";
-                try (Statement stmt = cnx.createStatement(); ResultSet rs = stmt.executeQuery(selectIdQuery)) {
-                    if (rs.next()) {
-                        idUsuario = rs.getInt("idUsuario");
+                try (ResultSet generatedKeys = pstUsuario.getGeneratedKeys()) {
+                    if (generatedKeys.next()) {
+                        idUsuario = generatedKeys.getInt(1);
                     }
                 }
 

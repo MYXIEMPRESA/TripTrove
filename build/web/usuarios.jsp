@@ -25,7 +25,9 @@
 
         table {
             border-collapse: collapse;
-            width: 100%;
+            width: 30%;
+            margin-top: 20px;
+            float: left;
         }
 
         th, td {
@@ -45,11 +47,6 @@
 
         .details {
             margin-left: 40%;
-        }
-
-        .table-container {
-            max-height: 300px; /* Altura máxima del contenedor */
-            overflow-y: auto; /* Agrega barra de desplazamiento vertical si el contenido es más grande que el contenedor */
         }
     </style>
 </head>
