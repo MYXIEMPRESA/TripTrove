@@ -10,25 +10,21 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="javax.servlet.http.HttpSession"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
-<%    
+<%
     String idUsuario = request.getParameter("usuario");
-    %><%=idUsuario%><%
-    List<String> ubicacionesNombres = new ArrayList<>();
-    List<String> ubicacionesCostos = new ArrayList<>();
-    List<String> ubicacionesTiempos = new ArrayList<>();
-    List<String> ubicacionesPuntuaciones = new ArrayList<>();
-    List<String> ubicacionesDescripciones = new ArrayList<>();
-    List<String> ubicacionesNombresUnicas;
-
+%><%=idUsuario%><%
+        List<String> ubicacionesNombres = new ArrayList<>();
+        List<String> ubicacionesCostos = new ArrayList<>();
+        List<String> ubicacionesTiempos = new ArrayList<>();
+        List<String> ubicacionesPuntuaciones = new ArrayList<>();
+        List<String> ubicacionesDescripciones = new ArrayList<>();
+        List<String> ubicacionesNombresUnicas;
         Connection cnx = null;
         CallableStatement sta = null;
         ResultSet rs = null;
-
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/triptrove?autoReconnect=true&useSSL=false", "root", "1234");
-
+            cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/triptrove?autoReconnect=true&useSSL=false", "root", "n0m3l0");
             // Modificamos la consulta para obtener el tipoCaract
             sta = cnx.prepareCall("SELECT u.idUsuario, ce.tipoCaract "
                     + "FROM usuario u "
@@ -36,16 +32,12 @@
                     + "JOIN caracteristicaEsp ce ON c.idCaracteristicas = ce.idCaracteristicas "
                     + "WHERE u.usuario=?");
             sta.setString(1, idUsuario);
-
             rs = sta.executeQuery();
-
             ArrayList<String> tiposCaract = new ArrayList<>();
-
             while (rs.next()) {
                 String tipoCaract = rs.getString("tipoCaract");
                 tiposCaract.add(tipoCaract);
             }
-
             if (!tiposCaract.isEmpty()) {
                 // Consulta para obtener las ubicaciones que coinciden con el tipoCaract
                 String query = "SELECT u.idUbicacion, u.nombreUbicacion, u.costoFig, u.tiempoFig, u.puntuacionProm, u.descripcion "
@@ -54,20 +46,15 @@
                         + "WHERE ceu.tipoCaract IN (?)";
                 String tiposCaractParam = "'" + String.join("','", tiposCaract) + "'";
                 query = query.replace("?", tiposCaractParam);
-
                 sta = cnx.prepareCall(query);
                 rs = sta.executeQuery();
-
                 // Mapa para contar la frecuencia de cada ubicación
                 Map<String, Integer> ubicacionFrecuencia = new HashMap<>();
-
                 // Listas para almacenar los datos de ubicaciones
                 while (rs.next()) {
                     String nombreUbicacion = rs.getString("nombreUbicacion");
-
                     // Incrementa la frecuencia de la ubicación
                     ubicacionFrecuencia.put(nombreUbicacion, ubicacionFrecuencia.getOrDefault(nombreUbicacion, 0) + 1);
-
                     // Agrega los datos de ubicación a las listas
                     ubicacionesNombres.add(rs.getString("nombreUbicacion"));
                     ubicacionesCostos.add(rs.getString("costoFig"));
@@ -75,12 +62,10 @@
                     ubicacionesPuntuaciones.add(rs.getString("puntuacionProm"));
                     ubicacionesDescripciones.add(rs.getString("descripcion"));
                 }
-
                 for (int i = 0; i < ubicacionesNombres.size() - 1; i++) {
                     for (int j = i + 1; j < ubicacionesNombres.size(); j++) {
                         String ubicacionI = ubicacionesNombres.get(i);
                         String ubicacionJ = ubicacionesNombres.get(j);
-
                         if (ubicacionFrecuencia.get(ubicacionJ) > ubicacionFrecuencia.get(ubicacionI)) {
                             // Intercambia las ubicaciones
                             String temp = ubicacionI;
@@ -89,11 +74,9 @@
                         }
                     }
                 }
-
                 // Eliminar duplicados manteniendo el orden
                 ubicacionesNombresUnicas = new ArrayList<>(new LinkedHashSet<>(ubicacionesNombres));
 %>
-
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -110,20 +93,16 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
         <style>
-
             #ubicacionesList {
                 list-style: none;
                 padding: 0;
                 display: flex;
                 flex-wrap: wrap;
-
                 justify-content: space-around;
             }
-
-
             button {
                 border: 1px solid #ddd;
                 margin: 10px;
@@ -136,11 +115,9 @@
                 transition: background-color 0.3s;
                 text-align: left;
             }
-
             button:hover {
                 background-color: #e0e0e0;
             }
-
             button img {
                 max-width: 300px;
                 max-height: 300px;
@@ -153,20 +130,16 @@
         </style>
     </head>
     <body>
-
         <header>
             <a href="#" class="logo">TripTrove </a>
             <input type="text" placeholder="¿A dónde vamos?" class="search-input">
-
             <ul>
                 <li><a href="jsp/cerrarsesion.jsp">CERRAR SESION</a></li>
-                <li><a href="mapa.html"><button class="location-button"><span class="material-symbols-outlined">location_on</span></button></a></li>
+                <li><a href="mapa.jsp"><button class="location-button"><span class="material-symbols-outlined">location_on</span></button></a></li>
                 <li><a href="chatUsuario.jsp"><button class="user-button"><span class="material-symbols-outlined">person</span></button></a></li>
             </ul>
         </header>
-
         <h2 class="titulito">LUGARES POPULARES</h2>
-
         <div class="cajita">
             <div id="myCarousel" class="carousel slide" data-ride="carousel">
                 <!-- Indicadores de navegación -->
@@ -176,7 +149,6 @@
                     <li data-target="#myCarousel" data-slide-to="2"></li>
                     <li data-target="#myCarousel" data-slide-to="3"></li>
                 </ol>
-
                 <!-- Imágenes del carrusel -->
                 <div class="carousel-inner">
                     <div class="carousel-item active">
@@ -248,7 +220,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- Controles de navegación -->
                 <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -260,14 +231,10 @@
                 </a>
             </div>
         </div>
-
         <div class="container text-center">
             <button class="btn btn-primary mt-3" onclick="window.location.href = 'index.html'">Regresar al Menú Principal</button>
         </div>
-
-
         <div class="desliza">
-
             <div class="scroll imgbx" style="--t:25s">
                 <div>
                     <img src="CSS/img/principal l.jpg">
@@ -294,7 +261,6 @@
             </div>
         </div>
         <h1>Ubicaciones Recomendadas:</h1>
-
         <ul id="ubicacionesList">
             <%                // Lógica para obtener y mostrar recomendaciones aquí
                 // ...
@@ -318,27 +284,26 @@
             <% }%>
         </ul>
         <%
-                    }
-                } catch (SQLException | ClassNotFoundException error) {
-                    out.print(error.toString());
-                } finally {
-                    try {
-                        if (rs != null) {
-                            rs.close();
-                        }
-                        if (sta != null) {
-                            sta.close();
-                        }
-                        if (cnx != null) {
-                            cnx.close();
-                        }
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    }
                 }
-            
-        %>
+            } catch (SQLException | ClassNotFoundException error) {
+                out.print(error.toString());
+            } finally {
+                try {
+                    if (rs != null) {
+                        rs.close();
+                    }
+                    if (sta != null) {
+                        sta.close();
+                    }
+                    if (cnx != null) {
+                        cnx.close();
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
 
+        %>
         <div id="noRecomendaciones" style="text-align: center; margin-top: 20px; font-size: 18px;">
             <img src="CSS/recomendaciones/caratriste.png" alt="Cara Triste" style="width: 50px;">
             <p>¡Oh no! Ya no tenemos más recomendaciones para ti.</p>
