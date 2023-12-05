@@ -48,7 +48,7 @@
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 String url = "jdbc:mysql://localhost:3306/TripTrove";
                 String user = "root";
-                String password = "n0m3l0";
+                String password = "1234";
                 conn = DriverManager.getConnection(url, user, password);
 
                 // Consultar ubicaciones desde la base de datos
@@ -61,7 +61,7 @@
                     ubicacion.put("nombre", rs.getString("nombreUbicacion"));
                     ubicacion.put("latitud", rs.getDouble("latitud"));
                     ubicacion.put("longitud", rs.getDouble("longitud"));
-                    // Agregar más atributos según sea necesario
+                    // Agregar mÃ¡s atributos segÃºn sea necesario
                     ubicaciones.add(ubicacion);
                 }
         %>
