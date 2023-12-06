@@ -49,7 +49,7 @@
                 display: block;
             }
         </style>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXhXtV1rMD-5y15llNS1fFMl8u8TvVBoo&libraries=places&callback=initMap" async defer></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXhXtV1rMD-5y15llNS1fFMl8u8TvVBoo&callback=initMap" async defer></script>
     </head>
 
     <body>
