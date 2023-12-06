@@ -13,69 +13,69 @@
 <%
     String idUsuario = request.getParameter("usuario");
 %><%=idUsuario%><%
-        List<String> ubicacionesNombres = new ArrayList<>();
-        List<String> ubicacionesCostos = new ArrayList<>();
-        List<String> ubicacionesTiempos = new ArrayList<>();
-        List<String> ubicacionesPuntuaciones = new ArrayList<>();
-        List<String> ubicacionesDescripciones = new ArrayList<>();
-        List<String> ubicacionesNombresUnicas;
-        Connection cnx = null;
-        CallableStatement sta = null;
-        ResultSet rs = null;
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/triptrove?autoReconnect=true&useSSL=false", "root", "1234");
-            // Modificamos la consulta para obtener el tipoCaract
-            sta = cnx.prepareCall("SELECT u.idUsuario, ce.tipoCaract "
-                    + "FROM usuario u "
-                    + "JOIN caracteristicas c ON u.idUsuario = c.idUsuario "
-                    + "JOIN caracteristicaEsp ce ON c.idCaracteristicas = ce.idCaracteristicas "
-                    + "WHERE u.usuario=?");
-            sta.setString(1, idUsuario);
+    List<String> ubicacionesNombres = new ArrayList<>();
+    List<String> ubicacionesCostos = new ArrayList<>();
+    List<String> ubicacionesTiempos = new ArrayList<>();
+    List<String> ubicacionesPuntuaciones = new ArrayList<>();
+    List<String> ubicacionesDescripciones = new ArrayList<>();
+    List<String> ubicacionesNombresUnicas;
+    Connection cnx = null;
+    CallableStatement sta = null;
+    ResultSet rs = null;
+    try {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/triptrove?autoReconnect=true&useSSL=false", "root", "1234");
+        // Modificamos la consulta para obtener el tipoCaract
+        sta = cnx.prepareCall("SELECT u.idUsuario, ce.tipoCaract "
+                + "FROM usuario u "
+                + "JOIN caracteristicas c ON u.idUsuario = c.idUsuario "
+                + "JOIN caracteristicaEsp ce ON c.idCaracteristicas = ce.idCaracteristicas "
+                + "WHERE u.usuario=?");
+        sta.setString(1, idUsuario);
+        rs = sta.executeQuery();
+        ArrayList<String> tiposCaract = new ArrayList<>();
+        while (rs.next()) {
+            String tipoCaract = rs.getString("tipoCaract");
+            tiposCaract.add(tipoCaract);
+        }
+        if (!tiposCaract.isEmpty()) {
+            // Consulta para obtener las ubicaciones que coinciden con el tipoCaract
+            String query = "SELECT u.idUbicacion, u.nombreUbicacion, u.costoFig, u.tiempoFig, u.puntuacionProm, u.descripcion "
+                    + "FROM ubicacion u "
+                    + "JOIN caracteristicaEspeUbicaciones ceu ON u.idUbicacion = ceu.idUbicacion "
+                    + "WHERE ceu.tipoCaract IN (?)";
+            String tiposCaractParam = "'" + String.join("','", tiposCaract) + "'";
+            query = query.replace("?", tiposCaractParam);
+            sta = cnx.prepareCall(query);
             rs = sta.executeQuery();
-            ArrayList<String> tiposCaract = new ArrayList<>();
+            // Mapa para contar la frecuencia de cada ubicación
+            Map<String, Integer> ubicacionFrecuencia = new HashMap<>();
+            // Listas para almacenar los datos de ubicaciones
             while (rs.next()) {
-                String tipoCaract = rs.getString("tipoCaract");
-                tiposCaract.add(tipoCaract);
+                String nombreUbicacion = rs.getString("nombreUbicacion");
+                // Incrementa la frecuencia de la ubicación
+                ubicacionFrecuencia.put(nombreUbicacion, ubicacionFrecuencia.getOrDefault(nombreUbicacion, 0) + 1);
+                // Agrega los datos de ubicación a las listas
+                ubicacionesNombres.add(rs.getString("nombreUbicacion"));
+                ubicacionesCostos.add(rs.getString("costoFig"));
+                ubicacionesTiempos.add(rs.getString("tiempoFig"));
+                ubicacionesPuntuaciones.add(rs.getString("puntuacionProm"));
+                ubicacionesDescripciones.add(rs.getString("descripcion"));
             }
-            if (!tiposCaract.isEmpty()) {
-                // Consulta para obtener las ubicaciones que coinciden con el tipoCaract
-                String query = "SELECT u.idUbicacion, u.nombreUbicacion, u.costoFig, u.tiempoFig, u.puntuacionProm, u.descripcion "
-                        + "FROM ubicacion u "
-                        + "JOIN caracteristicaEspeUbicaciones ceu ON u.idUbicacion = ceu.idUbicacion "
-                        + "WHERE ceu.tipoCaract IN (?)";
-                String tiposCaractParam = "'" + String.join("','", tiposCaract) + "'";
-                query = query.replace("?", tiposCaractParam);
-                sta = cnx.prepareCall(query);
-                rs = sta.executeQuery();
-                // Mapa para contar la frecuencia de cada ubicación
-                Map<String, Integer> ubicacionFrecuencia = new HashMap<>();
-                // Listas para almacenar los datos de ubicaciones
-                while (rs.next()) {
-                    String nombreUbicacion = rs.getString("nombreUbicacion");
-                    // Incrementa la frecuencia de la ubicación
-                    ubicacionFrecuencia.put(nombreUbicacion, ubicacionFrecuencia.getOrDefault(nombreUbicacion, 0) + 1);
-                    // Agrega los datos de ubicación a las listas
-                    ubicacionesNombres.add(rs.getString("nombreUbicacion"));
-                    ubicacionesCostos.add(rs.getString("costoFig"));
-                    ubicacionesTiempos.add(rs.getString("tiempoFig"));
-                    ubicacionesPuntuaciones.add(rs.getString("puntuacionProm"));
-                    ubicacionesDescripciones.add(rs.getString("descripcion"));
-                }
-                for (int i = 0; i < ubicacionesNombres.size() - 1; i++) {
-                    for (int j = i + 1; j < ubicacionesNombres.size(); j++) {
-                        String ubicacionI = ubicacionesNombres.get(i);
-                        String ubicacionJ = ubicacionesNombres.get(j);
-                        if (ubicacionFrecuencia.get(ubicacionJ) > ubicacionFrecuencia.get(ubicacionI)) {
-                            // Intercambia las ubicaciones
-                            String temp = ubicacionI;
-                            ubicacionesNombres.set(i, ubicacionJ);
-                            ubicacionesNombres.set(j, temp);
-                        }
+            for (int i = 0; i < ubicacionesNombres.size() - 1; i++) {
+                for (int j = i + 1; j < ubicacionesNombres.size(); j++) {
+                    String ubicacionI = ubicacionesNombres.get(i);
+                    String ubicacionJ = ubicacionesNombres.get(j);
+                    if (ubicacionFrecuencia.get(ubicacionJ) > ubicacionFrecuencia.get(ubicacionI)) {
+                        // Intercambia las ubicaciones
+                        String temp = ubicacionI;
+                        ubicacionesNombres.set(i, ubicacionJ);
+                        ubicacionesNombres.set(j, temp);
                     }
                 }
-                // Eliminar duplicados manteniendo el orden
-                ubicacionesNombresUnicas = new ArrayList<>(new LinkedHashSet<>(ubicacionesNombres));
+            }
+            // Eliminar duplicados manteniendo el orden
+            ubicacionesNombresUnicas = new ArrayList<>(new LinkedHashSet<>(ubicacionesNombres));
 %>
 <!DOCTYPE html>
 <html lang="es">
