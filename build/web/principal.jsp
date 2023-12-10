@@ -13,69 +13,69 @@
 <%
     String idUsuario = request.getParameter("usuario");
 %><%=idUsuario%><%
-        List<String> ubicacionesNombres = new ArrayList<>();
-        List<String> ubicacionesCostos = new ArrayList<>();
-        List<String> ubicacionesTiempos = new ArrayList<>();
-        List<String> ubicacionesPuntuaciones = new ArrayList<>();
-        List<String> ubicacionesDescripciones = new ArrayList<>();
-        List<String> ubicacionesNombresUnicas;
-        Connection cnx = null;
-        CallableStatement sta = null;
-        ResultSet rs = null;
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/triptrove?autoReconnect=true&useSSL=false", "root", "n0m3l0");
-            // Modificamos la consulta para obtener el tipoCaract
-            sta = cnx.prepareCall("SELECT u.idUsuario, ce.tipoCaract "
-                    + "FROM usuario u "
-                    + "JOIN caracteristicas c ON u.idUsuario = c.idUsuario "
-                    + "JOIN caracteristicaEsp ce ON c.idCaracteristicas = ce.idCaracteristicas "
-                    + "WHERE u.usuario=?");
-            sta.setString(1, idUsuario);
+    List<String> ubicacionesNombres = new ArrayList<>();
+    List<String> ubicacionesCostos = new ArrayList<>();
+    List<String> ubicacionesTiempos = new ArrayList<>();
+    List<String> ubicacionesPuntuaciones = new ArrayList<>();
+    List<String> ubicacionesDescripciones = new ArrayList<>();
+    List<String> ubicacionesNombresUnicas;
+    Connection cnx = null;
+    CallableStatement sta = null;
+    ResultSet rs = null;
+    try {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/triptrove?autoReconnect=true&useSSL=false", "root", "n0m3l0");
+        // Modificamos la consulta para obtener el tipoCaract
+        sta = cnx.prepareCall("SELECT u.idUsuario, ce.tipoCaract "
+                + "FROM usuario u "
+                + "JOIN caracteristicas c ON u.idUsuario = c.idUsuario "
+                + "JOIN caracteristicaEsp ce ON c.idCaracteristicas = ce.idCaracteristicas "
+                + "WHERE u.usuario=?");
+        sta.setString(1, idUsuario);
+        rs = sta.executeQuery();
+        ArrayList<String> tiposCaract = new ArrayList<>();
+        while (rs.next()) {
+            String tipoCaract = rs.getString("tipoCaract");
+            tiposCaract.add(tipoCaract);
+        }
+        if (!tiposCaract.isEmpty()) {
+            // Consulta para obtener las ubicaciones que coinciden con el tipoCaract
+            String query = "SELECT u.idUbicacion, u.nombreUbicacion, u.costoFig, u.tiempoFig, u.puntuacionProm, u.descripcion "
+                    + "FROM ubicacion u "
+                    + "JOIN caracteristicaEspeUbicaciones ceu ON u.idUbicacion = ceu.idUbicacion "
+                    + "WHERE ceu.tipoCaract IN (?)";
+            String tiposCaractParam = "'" + String.join("','", tiposCaract) + "'";
+            query = query.replace("?", tiposCaractParam);
+            sta = cnx.prepareCall(query);
             rs = sta.executeQuery();
-            ArrayList<String> tiposCaract = new ArrayList<>();
+            // Mapa para contar la frecuencia de cada ubicación
+            Map<String, Integer> ubicacionFrecuencia = new HashMap<>();
+            // Listas para almacenar los datos de ubicaciones
             while (rs.next()) {
-                String tipoCaract = rs.getString("tipoCaract");
-                tiposCaract.add(tipoCaract);
+                String nombreUbicacion = rs.getString("nombreUbicacion");
+                // Incrementa la frecuencia de la ubicación
+                ubicacionFrecuencia.put(nombreUbicacion, ubicacionFrecuencia.getOrDefault(nombreUbicacion, 0) + 1);
+                // Agrega los datos de ubicación a las listas
+                ubicacionesNombres.add(rs.getString("nombreUbicacion"));
+                ubicacionesCostos.add(rs.getString("costoFig"));
+                ubicacionesTiempos.add(rs.getString("tiempoFig"));
+                ubicacionesPuntuaciones.add(rs.getString("puntuacionProm"));
+                ubicacionesDescripciones.add(rs.getString("descripcion"));
             }
-            if (!tiposCaract.isEmpty()) {
-                // Consulta para obtener las ubicaciones que coinciden con el tipoCaract
-                String query = "SELECT u.idUbicacion, u.nombreUbicacion, u.costoFig, u.tiempoFig, u.puntuacionProm, u.descripcion "
-                        + "FROM ubicacion u "
-                        + "JOIN caracteristicaEspeUbicaciones ceu ON u.idUbicacion = ceu.idUbicacion "
-                        + "WHERE ceu.tipoCaract IN (?)";
-                String tiposCaractParam = "'" + String.join("','", tiposCaract) + "'";
-                query = query.replace("?", tiposCaractParam);
-                sta = cnx.prepareCall(query);
-                rs = sta.executeQuery();
-                // Mapa para contar la frecuencia de cada ubicación
-                Map<String, Integer> ubicacionFrecuencia = new HashMap<>();
-                // Listas para almacenar los datos de ubicaciones
-                while (rs.next()) {
-                    String nombreUbicacion = rs.getString("nombreUbicacion");
-                    // Incrementa la frecuencia de la ubicación
-                    ubicacionFrecuencia.put(nombreUbicacion, ubicacionFrecuencia.getOrDefault(nombreUbicacion, 0) + 1);
-                    // Agrega los datos de ubicación a las listas
-                    ubicacionesNombres.add(rs.getString("nombreUbicacion"));
-                    ubicacionesCostos.add(rs.getString("costoFig"));
-                    ubicacionesTiempos.add(rs.getString("tiempoFig"));
-                    ubicacionesPuntuaciones.add(rs.getString("puntuacionProm"));
-                    ubicacionesDescripciones.add(rs.getString("descripcion"));
-                }
-                for (int i = 0; i < ubicacionesNombres.size() - 1; i++) {
-                    for (int j = i + 1; j < ubicacionesNombres.size(); j++) {
-                        String ubicacionI = ubicacionesNombres.get(i);
-                        String ubicacionJ = ubicacionesNombres.get(j);
-                        if (ubicacionFrecuencia.get(ubicacionJ) > ubicacionFrecuencia.get(ubicacionI)) {
-                            // Intercambia las ubicaciones
-                            String temp = ubicacionI;
-                            ubicacionesNombres.set(i, ubicacionJ);
-                            ubicacionesNombres.set(j, temp);
-                        }
+            for (int i = 0; i < ubicacionesNombres.size() - 1; i++) {
+                for (int j = i + 1; j < ubicacionesNombres.size(); j++) {
+                    String ubicacionI = ubicacionesNombres.get(i);
+                    String ubicacionJ = ubicacionesNombres.get(j);
+                    if (ubicacionFrecuencia.get(ubicacionJ) > ubicacionFrecuencia.get(ubicacionI)) {
+                        // Intercambia las ubicaciones
+                        String temp = ubicacionI;
+                        ubicacionesNombres.set(i, ubicacionJ);
+                        ubicacionesNombres.set(j, temp);
                     }
                 }
-                // Eliminar duplicados manteniendo el orden
-                ubicacionesNombresUnicas = new ArrayList<>(new LinkedHashSet<>(ubicacionesNombres));
+            }
+            // Eliminar duplicados manteniendo el orden
+            ubicacionesNombresUnicas = new ArrayList<>(new LinkedHashSet<>(ubicacionesNombres));
 %>
 <!DOCTYPE html>
 <html lang="es">
@@ -86,38 +86,59 @@
         <title>Página Principal</title>
         <link rel="stylesheet" href="CSS/principal.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <!-- Enlace a Font Awesome -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+        <style>
+            #ubicacionesList {
+                list-style: none;
+                padding: 0;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+            }
+            button {
+                border: 1px solid #ddd;
+                margin: 10px;
+                padding: 15px;
+                border-radius: 8px;
+                background-color: #f9f9f9;
+                flex: 0 1 calc(30% - 20px);
+                box-sizing: border-box;
+                cursor: pointer;
+                transition: background-color 0.3s;
+                text-align: left;
+            }
+            button:hover {
+                background-color: #e0e0e0;
+            }
+            button img {
+                max-width: 300px;
+                max-height: 300px;
+                height: auto;
+                border-radius: 8px;
+                margin-top: 10px;
+                display: block;
+                margin: 0 auto;
+            }
+        </style>
     </head>
     <body>
-        <nav>
-            <div class="nav-bar">
-                <span class="logo"><a href="#">TripTrove</a></span>
-                <div class="menu">
-                    <ul class="nav-links">
-                        <li><a href="mapa.jsp">mapa</a></li>
-                        <li><a href="chatUsuario.jsp">lugar</a></li>
-                        <li><a href="index.html">Cerrar Sesion</a></li>
-                    </ul>
-                </div>
-                <div class="darkLight-searchBox">
-                    <div class="dark-light">
-                        <i class="bx bxs-moon moon"></i> <!-- esta es mas bonita pero no se si daña el code <i class='bx bxs-moon bx-tada' style='color:#ffffff' ></i>-->
-                        <i class="bx bx-sun"></i>
-                    </div>
-
-                    <div class="searchBox">
-                        <i class='bx bx-x-circle cancel' style='color:#ffffff' ></i> 
-                        <i class='bx bx-search-alt  search'></i>
-                    </div>
-                </div>
-            </div>
-        </nav>
-
+        <header>
+            <a href="#" class="logo">TripTrove </a>
+            <input type="text" placeholder="¿A dónde vamos?" class="search-input">
+            <ul>
+                <li><a href="jsp/cerrarsesion.jsp">CERRAR SESION</a></li>
+                <li><a href="mapa.jsp"><button class="location-button"><span class="material-symbols-outlined">location_on</span></button></a></li>
+                <li><a href="chatUsuario.jsp"><button class="user-button"><span class="material-symbols-outlined">person</span></button></a></li>
+            </ul>
+        </header>
         <h2 class="titulito">LUGARES POPULARES</h2>
         <div class="cajita">
             <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -287,6 +308,5 @@
             <img src="CSS/recomendaciones/caratriste.png" alt="Cara Triste" style="width: 50px;">
             <p>¡Oh no! Ya no tenemos más recomendaciones para ti.</p>
         </div>
-        <script src="CSS/script.js"></script>
     </body>
 </html>
