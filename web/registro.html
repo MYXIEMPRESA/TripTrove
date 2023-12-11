@@ -12,16 +12,14 @@
         <div class="wrapper">
             <br>
             <form action="etiqueta.jsp" method="post">
-                
+
                 <h1>Registro</h1>
-                
+
                 <div class="input-box">
                     <label for="">Usuario</label>
                     <input type="text" name="usuario"  required>
                     <i class='bx bxs-user'></i>
                 </div>
-                
-                
                 <div class="input-box">
                     <label for="email">Email</label>
                     <input type="email" name="correo"  required>
@@ -38,8 +36,8 @@
                 <div class="register-link">
                     <p>Ya tienes una cuenta? <a href="inicio.html">Iniciar sesión</a></p>
                 </div>
-            <br><br>
-                <button class="back-button" onclick="window.location.href='index.html'">
+                <br><br>
+                <button class="back-button" onclick="window.location.href = 'index.html'">
                     <span class="material-symbols-outlined">arrow_back_ios_new</span>
                 </button>
             </form>
@@ -47,28 +45,28 @@
 
         <script>
             // Obtener todos los campos de entrada
-const inputFields = document.querySelectorAll('.input-box input');
+            const inputFields = document.querySelectorAll('.input-box input');
 
 // Agregar un evento de enfoque (focus) y desenfoque (blur) a cada campo de entrada
-inputFields.forEach(inputField => {
-    inputField.addEventListener('focus', function () {
-        // Obtener la etiqueta asociada
-        const label = this.previousElementSibling;
+            inputFields.forEach(inputField => {
+                inputField.addEventListener('focus', function () {
+                    // Obtener la etiqueta asociada
+                    const label = this.previousElementSibling;
 
-        // Agregar una clase CSS para mover la etiqueta arriba
-        label.classList.add('active-label');
-    });
+                    // Agregar una clase CSS para mover la etiqueta arriba
+                    label.classList.add('active-label');
+                });
 
-    inputField.addEventListener('blur', function () {
-        // Obtener la etiqueta asociada
-        const label = this.previousElementSibling;
+                inputField.addEventListener('blur', function () {
+                    // Obtener la etiqueta asociada
+                    const label = this.previousElementSibling;
 
-        // Si el campo está vacío, quitar la clase para volver a la posición original
-        if (this.value === '') {
-            label.classList.remove('active-label');
-        }
-    });
-});
+                    // Si el campo está vacío, quitar la clase para volver a la posición original
+                    if (this.value === '') {
+                        label.classList.remove('active-label');
+                    }
+                });
+            });
 
         </script>
     </body>

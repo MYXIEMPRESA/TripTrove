@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Papalote Museo del Niño</title>
+    <link rel="stylesheet" type="text/css" href="css/papalote.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, initial-scale=1.0">
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">TripTrove</a>
+        <ul>
+            <li><a href="index.html">VOLVER</a></li>
+        </ul>
+    </header>
+
+    <div class="content">
+        <!-- Sección de Imágenes Destacadas -->
+        <div class="box">
+            <img src="css/img/papa1.jpg" alt="Larger Image">
+            <span>Aprender Jugando</span>
+        </div>
+        <div class="box">
+            <img src="css/img/papa.png" alt="Small Image 1">
+            <span>Exploración Creativa</span>
+        </div>
+        <div class="box">
+            <img src="css/img/papa3.jpg" alt="Small Image 2">
+            <span>Diversión Educativa</span>
+        </div>
+        <div class="box">
+            <img src="css/img/papa2.jpg" alt="Small Image 3">
+            <span>Aventuras Interactivas</span>
+        </div>
+    </div>
+
+    <!-- Sección de Introducción -->
+    <div class="image-text">
+        <h1>Explora el Mundo del Conocimiento en el Papalote Museo del Niño</h1>
+        <p>Sumérgete en un universo de aprendizaje interactivo y diversión en el Papalote Museo del Niño. Diseñado para inspirar la curiosidad y la creatividad, este museo ofrece experiencias educativas emocionantes para niños de todas las edades.</p>
+        <p>Desde exposiciones interactivas hasta actividades creativas, el Papalote Museo del Niño es el lugar perfecto para que los más pequeños exploren, descubran y aprendan a través del juego.</p>
+    </div>
+
+    <!-- Sección de Actividades -->
+    <div class="image-text1">
+        <h1>¿Qué puedes hacer?</h1>
+        <p>El Papalote Museo del Niño ofrece una variedad de actividades educativas y recreativas. Aquí algunas sugerencias:</p>
+        <ul>
+            <li>Participar en exposiciones interactivas que estimulan la imaginación.</li>
+            <li>Explorar áreas temáticas diseñadas para el aprendizaje y la diversión.</li>
+            <li>Participar en talleres y actividades creativas para desarrollar habilidades.</li>
+        </ul>
+    </div>
+
+    <!-- Sección de "Lugar ideal para" -->
+    <h1>Lugar ideal para:</h1>
+    <div class="content2">
+        <div class="icon-description">
+            <i class='bx bxs-book-open'></i>
+            <p>aprendizaje interactivo</p>
+        </div>
+        <div class="icon-description">
+            <i class='bx bxs-paint'></i>
+            <p>creatividad</p>
+        </div>
+        <div class="icon-description">
+            <i class='bx bxs-smile'></i>
+            <p>diversión en familia</p>
+        </div>
+        <div class="icon-description">
+            <i class='bx bxs-group'></i>
+            <p>actividades para grupos escolares</p>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        window.addEventListener("scroll", function () {
+            var header = document.querySelector("header");
+            header.classList.toggle("sticky", window.scrollY > 0);
+        })
+    </script>
+</body>
+</html>
