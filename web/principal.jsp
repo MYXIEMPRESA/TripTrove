@@ -24,7 +24,7 @@
     ResultSet rs = null;
     try {
         Class.forName("com.mysql.cj.jdbc.Driver");
-        cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/triptrove?autoReconnect=true&useSSL=false", "root", "n0m3l0");
+        cnx = DriverManager.getConnection("jdbc:mysql://localhost:3308/triptrove?autoReconnect=true&useSSL=false", "root", "n0m3l0");
         // Modificamos la consulta para obtener el tipoCaract
         sta = cnx.prepareCall("SELECT u.idUsuario, ce.tipoCaract "
                 + "FROM usuario u "
@@ -85,6 +85,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Página Principal</title>
         <link rel="stylesheet" href="CSS/principal.css">
+            <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
         <!-- Enlace a Font Awesome -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -103,43 +104,56 @@
                 flex-wrap: wrap;
                 justify-content: space-around;
             }
-            button {
+
+            .botoncillo {
                 border: 1px solid #ddd;
                 margin: 10px;
                 padding: 15px;
                 border-radius: 8px;
                 background-color: #f9f9f9;
-                flex: 0 1 calc(30% - 20px);
+                flex: 0 1 calc(33.33% - 20px); /* Ajuste del ancho para tres elementos por fila */
                 box-sizing: border-box;
                 cursor: pointer;
-                transition: background-color 0.3s;
+                transition: background-color 0.3s, filter 0.3s; /* Agregado el filtro en la transición */
                 text-align: left;
+                height: 500px;
             }
-            button:hover {
+
+            .botoncillo:hover {
                 background-color: #e0e0e0;
             }
-            button img {
-                max-width: 300px;
-                max-height: 300px;
+
+            .botoncillo:active {
+                background-color: #e0e0e0; /* Puedes ajustar este color según tus preferencias */
+                filter: brightness(1.2) hue-rotate(30deg); /* Ajusta el valor según tu preferencia para el efecto de brillo violeta */
+            }
+
+            .botoncillo img {
+                max-width: 100%;
                 height: auto;
                 border-radius: 8px;
                 margin-top: 10px;
                 display: block;
                 margin: 0 auto;
             }
+
+
         </style>
     </head>
     <body>
         <header>
             <a href="#" class="logo">TripTrove </a>
-            <input type="text" placeholder="¿A dónde vamos?" class="search-input">
             <ul>
-                <li><a href="jsp/cerrarsesion.jsp">CERRAR SESION</a></li>
-                <li><a href="mapa.jsp"><button class="location-button"><span class="material-symbols-outlined">location_on</span></button></a></li>
-                <li><a href="chatUsuario.jsp"><button class="user-button"><span class="material-symbols-outlined">person</span></button></a></li>
+
+                <li><a href="mapa.jsp">MAPA</a></li>
+                <li><a href="index.html">VOLVER</a></li>
+
             </ul>
         </header>
-        <h2 class="titulito">LUGARES POPULARES</h2>
+        <br><br><br><br>
+        
+        <h2 class="titulito">Lugares Populares</h2>
+        
         <div class="cajita">
             <div id="myCarousel" class="carousel slide" data-ride="carousel">
                 <!-- Indicadores de navegación -->
@@ -231,36 +245,14 @@
                 </a>
             </div>
         </div>
-        <div class="container text-center">
+        <!-- Descripción del lugar <div class="container text-center">
             <button class="btn btn-primary mt-3" onclick="window.location.href = 'index.html'">Regresar al Menú Principal</button>
+        </div>-->
+        <br><br><br>
+        <div class="icon-description">
+        <i class='bx bxs-star'></i>
+        <h2 class="titulito">Recomendados</h2>
         </div>
-        <div class="desliza">
-            <div class="scroll imgbx" style="--t:25s">
-                <div>
-                    <img src="CSS/img/principal l.jpg">
-                    <img src="CSS/img/principal 2.jpg">
-                    <img src="CSS/img/principal 3.jpg">
-                    <img src="CSS/img/principal 4.jpg">
-                    <img src="CSS/img/principal 5.jpg">
-                    <img src="CSS/img/principal 6.jpg">
-                    <img src="CSS/img/principal 7.jpg">
-                    <img src="CSS/img/principal 8.jpg">
-                    <img src="CSS/img/principal 9.jpg">
-                </div>
-                <div>
-                    <img src="CSS/img/principal l.jpg">
-                    <img src="CSS/img/principal 2.jpg">
-                    <img src="CSS/img/principal 3.jpg">
-                    <img src="CSS/img/principal 4.jpg">
-                    <img src="CSS/img/principal 5.jpg">
-                    <img src="CSS/img/principal 6.jpg">
-                    <img src="CSS/img/principal 7.jpg">
-                    <img src="CSS/img/principal 8.jpg">
-                    <img src="CSS/img/principal 9.jpg">
-                </div>
-            </div>
-        </div>
-        <h1>Ubicaciones Recomendadas:</h1>
         <ul id="ubicacionesList">
             <%                // Lógica para obtener y mostrar recomendaciones aquí
                 // ...
@@ -272,7 +264,7 @@
                     String descripcion = ubicacionesDescripciones.get(i);
             %>
             <li>
-                <button onclick="window.location.href = 'ubicaciones/<%= nombreUbicacion%>.html'">
+                <button class="botoncillo" onclick="window.location.href = 'ubicaciones/<%= nombreUbicacion%>.html'">
                     <strong>Nombre:</strong> <%= nombreUbicacion%><br>
                     <strong>Costo:</strong> <%= costo%><br>
                     <strong>Tiempo:</strong> <%= tiempo%><br>
@@ -308,5 +300,11 @@
             <img src="CSS/recomendaciones/caratriste.png" alt="Cara Triste" style="width: 50px;">
             <p>¡Oh no! Ya no tenemos más recomendaciones para ti.</p>
         </div>
+        <script type = "text/javascript">
+            window.addEventListener("scroll", function () {
+                var header = document.querySelector("header");
+                header.classList.toggle("sticky", window.scrollY > 0);
+            })
+        </script>
     </body>
 </html>

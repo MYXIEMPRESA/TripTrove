@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
+        <link rel="stylesheet" type="text/css" href="CSS/mapastyle.css">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Mi Mapa</title>
@@ -41,7 +43,7 @@
 
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/triptrove?autoReconnect=true&useSSL=false", "root", "n0m3l0");
+                conn = DriverManager.getConnection("jdbc:mysql://localhost:3308/triptrove?autoReconnect=true&useSSL=false", "root", "n0m3l0");
                 List<Map<String, Object>> ubicaciones = new ArrayList<>();
                 stmt = conn.createStatement();
                 rs = stmt.executeQuery("SELECT * FROM ubicacion");
@@ -56,21 +58,38 @@
         %>
 
 
-        <div>
-            <label for="modoViaje">Elegir modo de viaje:</label>
-            <select id="modoViaje">
-                <option value="WALKING">Caminando</option>
-                <option value="DRIVING">Manejando</option>
-            </select>
-            <button onclick="iniciarRuta()">Iniciar Ruta</button>
+        <div  cass="columna">
+            <h1>TripTrove</h1>
+            <h3>Tu guía viajero</h3>
+            <h2>Opciones de llegada</h2>
+            <div class="drodown">
+                <select id="modoViaje" class="Dropdown menu">
+                    <div class="options">
+
+                        <option value="WALKING">Caminando</option>
+                        <option value="DRIVING">Manejando</option>
+                    </div>
+                </select>
+            </div>
+            <div id="contenedor-botones">
+                <button onclick="elegirNuevaRuta()" class="cta">
+                    <span>Nueva ruta</span>
+                    <svg viewBox="0 0 13 10" height="10px" width="15px">
+                    <path d="M1,5 L11,5"></path>
+                    <polyline points="8 1 12 5 8 9"></polyline>
+                    </svg>
+                </button>
+
+
+
+
+            </div>
         </div>
 
         <div id="map"></div>
         <div id="ruta-info"></div>
 
-        <div id="contenedor-botones">
-            <button onclick="elegirNuevaRuta()">Elegir Nueva Ruta</button>
-        </div>
+
 
         <script>
 

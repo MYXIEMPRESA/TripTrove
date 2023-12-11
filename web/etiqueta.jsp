@@ -33,7 +33,7 @@
             
 
             Class.forName("com.mysql.cj.jdbc.Driver");
-            cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/triptrove?autoReconnect=true&useSSL=false", "root", "n0m3l0");
+            cnx = DriverManager.getConnection("jdbc:mysql://localhost:3308/triptrove?autoReconnect=true&useSSL=false", "root", "n0m3l0");
 
             String checkUserEmailQuery = "SELECT COUNT(*) AS count FROM usuario WHERE usuario = ? OR correo = ?";
             try (PreparedStatement pstCheckUserEmail = cnx.prepareStatement(checkUserEmailQuery)) {
@@ -111,7 +111,7 @@
                 }
 
                 // Insertar en la tabla caracterisitcaEspe solo los checkboxes seleccionados
-                String insertCaracterisitcaEspeQuery = "INSERT INTO caracteristicasEsp (idCaracteristicas, tipoCaract) VALUES (?, ?)";
+                String insertCaracterisitcaEspeQuery = "INSERT INTO caracteristicaEsp (idCaracteristicas, tipoCaract) VALUES (?, ?)";
                 pstCaracEspeciales = cnx.prepareStatement(insertCaracterisitcaEspeQuery);
 
                 // Insertar para cada tipo de característica especial solo si está seleccionada
