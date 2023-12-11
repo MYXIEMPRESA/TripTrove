@@ -13,27 +13,6 @@
 <%
     String idUsuario = request.getParameter("usuario");
 %><%=idUsuario%><%
-<<<<<<< HEAD
-        List<String> ubicacionesNombres = new ArrayList<>();
-        List<String> ubicacionesCostos = new ArrayList<>();
-        List<String> ubicacionesTiempos = new ArrayList<>();
-        List<String> ubicacionesPuntuaciones = new ArrayList<>();
-        List<String> ubicacionesDescripciones = new ArrayList<>();
-        List<String> ubicacionesNombresUnicas;
-        Connection cnx = null;
-        CallableStatement sta = null;
-        ResultSet rs = null;
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/triptrove?autoReconnect=true&useSSL=false", "root", "1234");
-            // Modificamos la consulta para obtener el tipoCaract
-            sta = cnx.prepareCall("SELECT u.idUsuario, ce.tipoCaract "
-                    + "FROM usuario u "
-                    + "JOIN caracteristicas c ON u.idUsuario = c.idUsuario "
-                    + "JOIN caracteristicaEsp ce ON c.idCaracteristicas = ce.idCaracteristicas "
-                    + "WHERE u.usuario=?");
-            sta.setString(1, idUsuario);
-=======
     List<String> ubicacionesNombres = new ArrayList<>();
     List<String> ubicacionesCostos = new ArrayList<>();
     List<String> ubicacionesTiempos = new ArrayList<>();
@@ -45,7 +24,7 @@
     ResultSet rs = null;
     try {
         Class.forName("com.mysql.cj.jdbc.Driver");
-        cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/triptrove?autoReconnect=true&useSSL=false", "root", "1234");
+        cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/triptrove?autoReconnect=true&useSSL=false", "root", "n0m3l0");
         // Modificamos la consulta para obtener el tipoCaract
         sta = cnx.prepareCall("SELECT u.idUsuario, ce.tipoCaract "
                 + "FROM usuario u "
@@ -68,7 +47,6 @@
             String tiposCaractParam = "'" + String.join("','", tiposCaract) + "'";
             query = query.replace("?", tiposCaractParam);
             sta = cnx.prepareCall(query);
->>>>>>> 24c08db18e1c9e75efbac3af82589ddc5b3727d4
             rs = sta.executeQuery();
             // Mapa para contar la frecuencia de cada ubicación
             Map<String, Integer> ubicacionFrecuencia = new HashMap<>();

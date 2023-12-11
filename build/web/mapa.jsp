@@ -1,9 +1,10 @@
-<%@page import="com.google.gson.Gson"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="com.google.gson.Gson" %>
 <%@page import="java.util.Map"%>
 <%@page import="java.util.HashMap"%>
-<%@ page import="java.sql.*" %>
-<%@ page import="java.util.List" %>
-<%@ page import="java.util.ArrayList" %>
+<%@page import="java.sql.*" %>
+<%@page import="java.util.List" %>
+<%@page import="java.util.ArrayList" %>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -49,7 +50,7 @@
                 display: block;
             }
         </style>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXhXtV1rMD-5y15llNS1fFMl8u8TvVBoo&libraries=places&callback=initMap" async defer></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXhXtV1rMD-5y15llNS1fFMl8u8TvVBoo&callback=initMap" async defer></script>
     </head>
 
     <body>
@@ -77,7 +78,7 @@
                     ubicacion.put("nombre", rs.getString("nombreUbicacion"));
                     ubicacion.put("latitud", rs.getDouble("latitud"));
                     ubicacion.put("longitud", rs.getDouble("longitud"));
-                    // Agregar m�s atributos seg�n sea necesario
+                    // Agregar mÃ¡s atributos segÃºn sea necesario
                     ubicaciones.add(ubicacion);
                 }
         %>
