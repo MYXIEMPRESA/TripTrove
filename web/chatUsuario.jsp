@@ -79,7 +79,7 @@
             newMessage.textContent = mensaje;
             messageContainer.appendChild(newMessage);
 
-            // Scroll hacia abajo para mostrar el último mensaje
+            // Scroll hacia abajo para mostrar el ï¿½ltimo mensaje
             messageContainer.scrollTop = messageContainer.scrollHeight;
         }
 
@@ -89,7 +89,7 @@
 
             if (mensaje !== "") {
                 socket.send("{'de':'Nahum','para':'soporte','mensaje':'" + mensaje + "'}");
-                messageInput.value = ""; // Limpiar el área de texto después de enviar el mensaje
+                messageInput.value = ""; // Limpiar el ï¿½rea de texto despuï¿½s de enviar el mensaje
             }
         }
     </script>

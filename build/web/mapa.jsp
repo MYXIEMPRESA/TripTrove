@@ -90,7 +90,7 @@
                 directionsRenderer = new google.maps.DirectionsRenderer({suppressMarkers: true, panel: document.getElementById('ruta-info')});
                 directionsRenderer.setMap(map);
 
-                // ... (resto del código igual)
+                // ... (resto del cï¿½digo igual)
 
                 lugares.forEach(function (lugar, index) {
                     var marker = new google.maps.Marker({

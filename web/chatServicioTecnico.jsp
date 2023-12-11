@@ -22,7 +22,7 @@
         </div>
         <p></p>
         <p></p>
-        <!-- Las respuestas del servidor se escriben aquí -->
+        <!-- Las respuestas del servidor se escriben aquï¿½ -->
         <div id="messages"></div>
 
         <!-- Script para utilizar el WebSocket  -->
@@ -33,7 +33,7 @@
             function openSocket() {
                 // Ensure only one connection is open at a time
                 if (webSocket && webSocket.readyState !== WebSocket.CLOSED) {
-                    writeResponse("WebSocket ya está abierto.");
+                    writeResponse("WebSocket ya estï¿½ abierto.");
                     return;
                 }
                 // Create a new instance of WebSocket
@@ -66,7 +66,7 @@
                 if (webSocket && webSocket.readyState === WebSocket.OPEN) {
                     webSocket.send(text);
                 } else {
-                    writeResponse("WebSocket no está abierto. Por favor, abre la conexión antes de enviar.");
+                    writeResponse("WebSocket no estï¿½ abierto. Por favor, abre la conexiï¿½n antes de enviar.");
                 }
             }
 
@@ -74,7 +74,7 @@
                 if (webSocket) {
                     webSocket.close();
                 } else {
-                    writeResponse("WebSocket no está definido.");
+                    writeResponse("WebSocket no estï¿½ definido.");
                 }
             }
 
