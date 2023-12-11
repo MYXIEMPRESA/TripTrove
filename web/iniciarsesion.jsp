@@ -1,3 +1,4 @@
+<%@page import="java.util.Comparator"%>
 <%@page import="java.util.LinkedHashSet"%>
 <%@page import="java.util.Arrays"%>
 <%@page import="java.io.UnsupportedEncodingException"%>
@@ -25,7 +26,7 @@
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/triptrove?autoReconnect=true&useSSL=false", "root", "n0m3l0");
+            cnx = DriverManager.getConnection("jdbc:mysql://localhost:3308/triptrove?autoReconnect=true&useSSL=false", "root", "n0m3l0");
 
             // Modificamos la consulta para obtener el tipoCaract
             sta = cnx.prepareCall("SELECT u.idUsuario, ce.tipoCaract "
@@ -81,9 +82,23 @@
                     ubicacionesDescripciones.add(rs.getString("descripcion"));
                 }
 
-                // Ordena las ubicaciones por frecuencia (de mayor a menor)
-                Collections.sort(ubicacionesNombres, ( a,   b) -> ubicacionFrecuencia.get(b) - ubicacionFrecuencia.get(a));
+              
 
+int n = ubicacionesNombres.size();
+
+for (int i = 0; i < n - 1; i++) {
+    for (int j = 0; j < n - i - 1; j++) {
+        String ubicacionA = ubicacionesNombres.get(j);
+        String ubicacionB = ubicacionesNombres.get(j + 1);
+
+        if (ubicacionFrecuencia.get(ubicacionB) > ubicacionFrecuencia.get(ubicacionA)) {
+            // Intercambiar ubicacionA y ubicacionB
+            String temp = ubicacionA;
+            ubicacionesNombres.set(j, ubicacionB);
+            ubicacionesNombres.set(j + 1, temp);
+        }
+    }
+}
                 // Eliminar duplicados manteniendo el orden
                 List<String> ubicacionesNombresUnicas = new ArrayList<>(new LinkedHashSet<>(ubicacionesNombres));
 

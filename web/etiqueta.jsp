@@ -57,7 +57,7 @@
 
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/triptrove?autoReconnect=true&useSSL=false", "root", "n0m3l0");
+                cnx = DriverManager.getConnection("jdbc:mysql://localhost:3308/triptrove?autoReconnect=true&useSSL=false", "root", "n0m3l0");
 
                 // Insertar en la tabla usuario
                 String insertUsuarioQuery = "INSERT INTO usuario (usuario, correo, contra) VALUES (?, ?, ?)";
@@ -94,8 +94,8 @@
                 }
 
                 // Insertar en la tabla caracterisitcaEspe solo los checkboxes seleccionados
-                String insertCaracterisitcaEspeQuery = "INSERT INTO caracterisitcaEspe (idCaracteristicas, tipoCaract) VALUES (?, ?)";
-                pstCaracEspeciales = cnx.prepareStatement(insertCaracterisitcaEspeQuery);
+                String insertCaracteristicaEspeQuery = "INSERT INTO caracteristicaEspeUbicaciones (idCaracteristicas, tipoCaract) VALUES (?, ?)";
+                pstCaracEspeciales = cnx.prepareStatement(insertCaracteristicaEspeQuery);
 
                 // Insertar para cada tipo de característica especial solo si está seleccionada
                 if (diversion != null) {

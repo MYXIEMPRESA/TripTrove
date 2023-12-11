@@ -1,4 +1,4 @@
-         <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -16,79 +16,154 @@
                     <form action="etiqueta.jsp">
                     <div class="fase fase-1">
                         <!-- Fase 1: Bienvenida -->
-                        <h1>Bienvenido</h1>
-                        <p>¡Encuentra tu destino de ensueño!</p>
+                        <h1>TripTrove</h1>
+                        
+                        <h2>¡Bienvenido!</h2>
+                        <p>Definamos tu perfil ideal</p>
+                        
                         <!-- Botón "Siguiente" para avanzar a la siguiente fase -->
                     </div>
                     <div class="fase fase-2">
                         <!-- Fase 2: Preguntas con checkboxes -->
+                        <h1>TripTrove</h1>
                         <h2>¿Qué buscas en un lugar?</h2>
                         <div class="etiquetas">
                             <label>
-                                <input type="checkbox" id="diversion" name="diversion" value="diversion"> Diversión
+                                <input type="checkbox" id="diversion" name="diversion" value="diversion"> <span class="list">Diversión</span>
                             </label>
                             <label>
-                                <input type="checkbox" id="cultural" name="cultural" value="cultural"> Cultural
+                                <input type="checkbox" id="cultural" name="cultural" value="cultural"> <span class="list">Cultural</span>
                             </label>
                             <label>
-                                <input type="checkbox" id="familiar" name="familiar" value="familiar"> Familiar
+                                <input type="checkbox" id="familiar" name="familiar" value="familiar"> <span class="list">Familiar</span>
                             </label>
                             <label>
-                                <input type="checkbox" id="naturaleza" name="naturaleza" value="naturaleza"> Naturaleza
+                                <input type="checkbox" id="naturaleza" name="naturaleza" value="naturaleza"> <span class="list">Naturaleza</span>
                             </label>
                             <label>
-                                <input type="checkbox" id="museos" name="museos" value="museos"> Museos
+                                <input type="checkbox" id="museos" name="museos" value="museos"> <span class="list">Museos</span>
                             </label>
                             <label>
-                                <input type="checkbox" id="parques" name="parques" value="parques"> Parques
+                                <input type="checkbox" id="parques" name="parques" value="parques"> <span class="list">Parques</span>
                             </label>
 
                         </div>
-                        <!-- Botón "Atrás" y "Siguiente" para navegar entre fases -->
+                        <!-- Botón "Atrás" y "Siguiente" para navegar entre fases 
                         <img src="CSS/img/fase 2-1.png" alt="Imagen de la Fase 2">
-                        <img src="CSS/img/fase 2.png" alt="Imagen de la Fase 2">
+                        <img src="CSS/img/fase 2.png" alt="Imagen de la Fase 2"> -->
+                        
+                        
 
                     </div>
                     <div class="fase fase-3">
-                        <h3>Presupuesto</h3>
-                        <select name="costo" id="costo">
+                        <h1>TripTrove</h1>
+                        <h2>Presupuesto</h2>
+                        
+                        <div class="drodown">
+                        <select class="Dropdown menu"name="costo" id="costo">
+                            <div class="options">
                             <option disabled selected  value="costo">Costo</option>
-                            <option value="alto">Alto</option>
-                            <option value="medio">Medio</option>
-                            <option value="bajo">Bajo</option>
-
+                            <option value="alto">$400-$800</option>
+                            <option value="medio"> $140-$290</option>
+                            <option value="bajo">$45-$125</option>
+                        </div>
+                        
                         </select>
-                        <p>.</p>
-                        <p>.             .<img src="CSS/img/fase3.png" alt="Imagen de la Fase 2"></p>
+                        
+                        </div>
+
                     </div>
                     <div class="fase fase-4">
-                        <h3>Tiempo</h3>
-                        <select name="tiempo" id="tiempo">
+                        <h1>TripTrove</h1>
+                        <h2>Tiempo</h2>
+                        <div class="drodown">
+                        <select class="Dropdown menu" name="tiempo" id="tiempo">
+                            <div class="options">
                             <option disabled selected  value="tiempo">Tiempo</option>
-                            <option value="talto">Alto</option>
-                            <option value="tmedio">Medio</option>
-                            <option value="tbajo">Bajo</option>
-
+                            <option value="talto">5-7 horas</option>
+                            <option value="tmedio"> 3-4 horas</option>
+                            <option value="tbajo">1-2 horas</option>
+                            </div>
                         </select>
-                        <p>.</p>
-                        <p>.              .<img src="CSS/img/fase4.png" alt="Imagen de la Fase 2"></p>
+                        </div>
+                        <p></p>
+                        
                     </div>
                     
                         <div class="fase fase-5">
+                            <h1>TripTrove</h1>
                             <h2>¡Felicidades, has terminado!</h2>
                             <!-- Fase 5: Última fase (vacía por ahora) -->
                             <!-- Botón "Atrás" para retroceder -->
-                            <img src="CSS/img/fase5.png" alt="Imagen de la Fase 2">
-                            <button type="submit" name="subir" class="btn-submit">Subir</button>
-
-
+                            <img src="CSS/img/fiesta.png" alt="Imagen de la Fase 2">
+                        <div class="botones1">
+                            
+                            <button class="uiverse" type="submit" name="subir">
+                                <div class="btn-submit">
+                                    <div class="wrapper">
+                                        <span>Subir</span>
+                                        <div class="circle circle-12"></div>
+                                        <div class="circle circle-11"></div>
+                                        <div class="circle circle-10"></div>
+                                        <div class="circle circle-9"></div>
+                                        <div class="circle circle-8"></div>
+                                        <div class="circle circle-7"></div>
+                                        <div class="circle circle-6"></div>
+                                        <div class="circle circle-5"></div>
+                                        <div class="circle circle-4"></div>
+                                        <div class="circle circle-3"></div>
+                                        <div class="circle circle-2"></div>
+                                        <div class="circle circle-1"></div>
+                                      </div>
+                                </div>
+                            </button>
+                            
+                        </div>
                         </div>
                     </form>
-
-                    <div class="botones">
-                        <button class="btn-back">Atrás</button>
-                        <button class="btn-next">Siguiente</button>
+                <div class="botones">
+                <div class="izquierda">
+                    <button class="uiverse">
+                        <div class="btn-back"> 
+                        <div class="wrapper">
+                          <span>Atras</span>
+                          <div class="circle circle-12"></div>
+                          <div class="circle circle-11"></div>
+                          <div class="circle circle-10"></div>
+                          <div class="circle circle-9"></div>
+                          <div class="circle circle-8"></div>
+                          <div class="circle circle-7"></div>
+                          <div class="circle circle-6"></div>
+                          <div class="circle circle-5"></div>
+                          <div class="circle circle-4"></div>
+                          <div class="circle circle-3"></div>
+                          <div class="circle circle-2"></div>
+                          <div class="circle circle-1"></div>
+                        </div>
                     </div>
+                      </button>
+</div>
+                      <button class="uiverse">
+                        <div class="btn-next"> 
+                        <div class="wrapper">
+                          <span>Siguiente</span>
+                          <div class="circle circle-12"></div>
+                          <div class="circle circle-11"></div>
+                          <div class="circle circle-10"></div>
+                          <div class="circle circle-9"></div>
+                          <div class="circle circle-8"></div>
+                          <div class="circle circle-7"></div>
+                          <div class="circle circle-6"></div>
+                          <div class="circle circle-5"></div>
+                          <div class="circle circle-4"></div>
+                          <div class="circle circle-3"></div>
+                          <div class="circle circle-2"></div>
+                          <div class="circle circle-1"></div>
+                        </div>
+                        </div>
+                      </button>
+                    
+                </div>                    
                 </div>
             </div>
         </div>

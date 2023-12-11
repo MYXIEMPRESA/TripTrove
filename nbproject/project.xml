@@ -8,6 +8,9 @@
             <web-module-libraries>
                 <library dirs="200">
                     <file>${file.reference.mysql-connector-j-8.0.32.jar}</file>
+                </library>
+                <library dirs="200">
+                    <file>${file.reference.mysql-connector-j-8.0.32.jar}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
             </web-module-libraries>

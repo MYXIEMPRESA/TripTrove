@@ -1,5 +1,4 @@
-/* Estilos para la página de etiqueta de turismo */
-
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -48,76 +47,364 @@ body {
 }
 
 h1 {
-    font-size: 24px;
-    color: #333;
+    text-align: center;
+    font-size: 25px;
+    color: rgb(51, 51, 51);
+    font-family: "Poppins", sans-serif;
 }
-
+h3{
+  font-size: 15px;
+  font-family: "Poppins", sans-serif;
+}
 h2 {
-    font-size: 18px;
-    color: #333;
+    text-align: center;
+    font-size: 20px;
+    color: rgba(26, 163, 255, .7);
+}
+p{
+    text-align: center;
+    text-align: center;
 }
 
 .etiquetas {
+    display: inline-block;
     margin: 20px 0;
+       
 }
 
 .etiquetas label {
-    display: block;
-    margin: 5px 0;
+   cursor: pointer;
+    
+}
+.etiquetas label span{
+    display: inline-block;
+    margin: 0;
     color: #333;
-}
-
-.botones {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-}
-
-.button-container {
-    text-align: right;
-}
-
-/* Estilos para los botones */
-button {
-    background-color: #1379ff;
-    color: white;
-    border: none;
-    padding: 15px 30px;
-    cursor: pointer;
+    padding: 10px 15px;
+    background-color:#1379ff2d;
+    text-shadow: 0 1px 4px rgba(196, 152, 152, 0.5);
+    border-radius: 30px;
     font-size: 18px;
-    border-radius: 5px;
-    margin-right: 10px;
+    font-family: "Poppins", sans-serif;
+    transition: 0.5s;
+    user-select: none;
+    overflow: hidden;
+}
+.etiquetas input[type="checkbox"]:checked + span{
+    
+    border-radius: 30px;
+    background: rgba(71, 172, 250, 0.903);
+    color: #333;
+    box-shadow: 0 0 10px #0254c0ae;
+}
+.etiquetas label input[type="checkbox"]{
+   display: none;
+}
+.uiverse {
+    --duration: 7s;
+    --easing: linear;
+    --c-color-1: rgba(26, 163, 255, .7);
+   /* Changed color */
+   
+   /* Changed color */
+   --c-color-4: rgb(252, 252, 252);
+   /* Changed color */
+    --c-color-4: rgba(26, 232, 255, .7);
+   /* Changed color */
+    --c-shadow: rgba(87, 223, 255, .5);
+   /* Changed color */
+    --c-shadow-inset-top: rgba(52, 223, 255, .9);
+   /* Changed color */
+    --c-shadow-inset-bottom: rgba(215, 250, 255, .8);
+   /* Changed color */
+    --c-radial-inner: #15d2ff;
+   /* Changed color */
+    --c-radial-outer: #72faff;
+   /* Changed color */
+    --c-color: #040404;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-appearance: none;
+    outline: none;
+    position: relative;
+    cursor: pointer;
+    border: none;
+    display: table;
+    border-radius: 24px;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    font-weight: 600;
+    font-size: 15px;
+    font-family: "Poppins", sans-serif;
+    letter-spacing: 0.02em;
+    line-height: 1.5;
+    color: var(--c-color);
+    background: radial-gradient(circle, var(--c-radial-inner), var(--c-radial-outer) 80%);
+    box-shadow: 0 0 14px var(--c-shadow);
+  }
+  
+  .uiverse:before {
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    z-index: 3;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 24px;
+    box-shadow: inset 0 3px 12px var(--c-shadow-inset-top), inset 0 -3px 4px var(--c-shadow-inset-bottom);
+  }
+  
+  .uiverse .wrapper {
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    overflow: hidden;
+    border-radius: 24px;
+    min-width: 132px;
+    padding: 12px 0;
+  }
+  
+  .uiverse .wrapper span {
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .uiverse .wrapper .circle {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    filter: blur(var(--blur, 8px));
+    background: var(--background, transparent);
+    transform: translate(var(--x, 0), var(--y, 0)) translateZ(0);
+    animation: var(--animation, none) var(--duration) var(--easing) infinite;
+  }
+  
+  .uiverse .wrapper .circle.circle-1, .uiverse .wrapper .circle.circle-9, .uiverse .wrapper .circle.circle-10 {
+    --background: var(--c-color-4);
+  }
+  
+  .uiverse .wrapper .circle.circle-3, .uiverse .wrapper .circle.circle-4 {
+    --background: var(--c-color-2);
+    --blur: 14px;
+  }
+  
+  .uiverse .wrapper .circle.circle-5, .uiverse .wrapper .circle.circle-6 {
+    --background: var(--c-color-3);
+    --blur: 16px;
+  }
+  
+  .uiverse .wrapper .circle.circle-2, .uiverse .wrapper .circle.circle-7, .uiverse .wrapper .circle.circle-8, .uiverse .wrapper .circle.circle-11, .uiverse .wrapper .circle.circle-12 {
+    --background: var(--c-color-1);
+    --blur: 12px;
+  }
+  
+  .uiverse .wrapper .circle.circle-1 {
+    --x: 0;
+    --y: -40px;
+    --animation: circle-1;
+  }
+  
+  .uiverse .wrapper .circle.circle-2 {
+    --x: 92px;
+    --y: 8px;
+    --animation: circle-2;
+  }
+  
+  .uiverse .wrapper .circle.circle-3 {
+    --x: -12px;
+    --y: -12px;
+    --animation: circle-3;
+  }
+  
+  .uiverse .wrapper .circle.circle-4 {
+    --x: 80px;
+    --y: -12px;
+    --animation: circle-4;
+  }
+  
+  .uiverse .wrapper .circle.circle-5 {
+    --x: 12px;
+    --y: -4px;
+    --animation: circle-5;
+  }
+  
+  .uiverse .wrapper .circle.circle-6 {
+    --x: 56px;
+    --y: 16px;
+    --animation: circle-6;
+  }
+  
+  .uiverse .wrapper .circle.circle-7 {
+    --x: 8px;
+    --y: 28px;
+    --animation: circle-7;
+  }
+  
+  .uiverse .wrapper .circle.circle-8 {
+    --x: 28px;
+    --y: -4px;
+    --animation: circle-8;
+  }
+  
+  .uiverse .wrapper .circle.circle-9 {
+    --x: 20px;
+    --y: -12px;
+    --animation: circle-9;
+  }
+  
+  .uiverse .wrapper .circle.circle-10 {
+    --x: 64px;
+    --y: 16px;
+    --animation: circle-10;
+  }
+  
+  .uiverse .wrapper .circle.circle-11 {
+    --x: 4px;
+    --y: 4px;
+    --animation: circle-11;
+  }
+  
+  .uiverse .wrapper .circle.circle-12 {
+    --blur: 14px;
+    --x: 52px;
+    --y: 4px;
+    --animation: circle-12;
+  }
+  
+  @keyframes circle-1 {
+    33% {
+      transform: translate(0px, 16px) translateZ(0);
+    }
+  
+    66% {
+      transform: translate(12px, 64px) translateZ(0);
+    }
+  }
+  
+  @keyframes circle-2 {
+    33% {
+      transform: translate(80px, -10px) translateZ(0);
+    }
+  
+    66% {
+      transform: translate(72px, -48px) translateZ(0);
+    }
+  }
+  
+  @keyframes circle-3 {
+    33% {
+      transform: translate(20px, 12px) translateZ(0);
+    }
+  
+    66% {
+      transform: translate(12px, 4px) translateZ(0);
+    }
+  }
+  
+  @keyframes circle-4 {
+    33% {
+      transform: translate(76px, -12px) translateZ(0);
+    }
+  
+    66% {
+      transform: translate(112px, -8px) translateZ(0);
+    }
+  }
+  
+  @keyframes circle-5 {
+    33% {
+      transform: translate(84px, 28px) translateZ(0);
+    }
+  
+    66% {
+      transform: translate(40px, -32px) translateZ(0);
+    }
+  }
+  
+  @keyframes circle-6 {
+    33% {
+      transform: translate(28px, -16px) translateZ(0);
+    }
+  
+    66% {
+      transform: translate(76px, -56px) translateZ(0);
+    }
+  }
+  
+  @keyframes circle-7 {
+    33% {
+      transform: translate(8px, 28px) translateZ(0);
+    }
+  
+    66% {
+      transform: translate(20px, -60px) translateZ(0);
+    }
+  }
+  
+  @keyframes circle-8 {
+    33% {
+      transform: translate(32px, -4px) translateZ(0);
+    }
+  
+    66% {
+      transform: translate(56px, -20px) translateZ(0);
+    }
+  }
+  
+  @keyframes circle-9 {
+    33% {
+      transform: translate(20px, -12px) translateZ(0);
+    }
+  
+    66% {
+      transform: translate(80px, -8px) translateZ(0);
+    }
+  }
+  
+  @keyframes circle-10 {
+    33% {
+      transform: translate(68px, 20px) translateZ(0);
+    }
+  
+    66% {
+      transform: translate(100px, 28px) translateZ(0);
+    }
+  }
+  
+  @keyframes circle-11 {
+    33% {
+      transform: translate(4px, 4px) translateZ(0);
+    }
+  
+    66% {
+      transform: translate(68px, 20px) translateZ(0);
+    }
+  }
+  
+  @keyframes circle-12 {
+    33% {
+      transform: translate(56px, 0px) translateZ(0);
+    }
+  
+    66% {
+      transform: translate(60px, -32px) translateZ(0);
+    }
+  }
+
+.dinero{
+    height: 50px;
+  align-content: center;
+  align-items: center;
+  width: auto;
+    display: block; /* Hace que la imagen sea un bloque para aplicar márgenes */
+    margin: 0 auto; /* Auto en los márgenes horizontalmente para centrar */
+    
 }
 
-/* Estilo para el botón "Atrás" */
-.btn-back {
-    background-color: #1379ff;
-}
-
-/* Estilo para el botón "Siguiente" */
-.btn-next {
-    background-color:#1379ff;
-}
-
-/* Alinea el botón "Atrás" a la izquierda del botón "Siguiente" */
-.btn-back {
-    float: left;
-    margin-right: 10px; /* Espacio entre los botones */
-}
-.btn-submit {
-    float: left;
-    margin-right: 10px; /* Espacio entre los botones */
-}
-
-
-.fase-1 img {
-    height: 20px;
-    max-height: 20px;
-}
-
-.fase-2 img {
-    height: 270px;
-}
 
 .fase-3 img {
     height: 300px;
@@ -146,4 +433,71 @@ button {
 
 .fase-4 {
     margin-bottom: 20px;
+}
+.botones {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+.botones1 {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.izquierda {
+    float: left;
+    margin-right: 10px; /* Espacio entre los botones */
+}
+.derecha {
+  float: right;
+  margin-right: 10px; /* Espacio entre los botones */
+}
+.drodown{
+    
+position: relative;
+margin-top: 50px;
+width: 300px;
+height: 200px;
+margin-left: auto;
+    margin-right: auto
+
+}
+
+.drodown select{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100;
+    cursor: pointer;
+    background: #f8f8f8;
+    border: none;
+    outline: none;
+    box-shadow: 0 5px 20px rgba(162, 203, 238, 0.789);
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: "Poppins", sans-serif;;
+    
+    
+}
+.drodown option div{
+    padding: 50px 20px;
+    cursor: pointer;
+}
+.drodown option{
+    position: absolute;
+    top: 70px;
+    width: 100px;
+    background: #f8f8f8;
+    box-shadow: 0 30px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    overflow: hidden;
+    
+    
+}
+
+.drodown option:hover {
+    background: rgba(71, 172, 250, 0.903);
 }
