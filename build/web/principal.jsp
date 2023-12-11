@@ -12,7 +12,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     String idUsuario = request.getParameter("usuario");
-%><%=idUsuario%><%
     List<String> ubicacionesNombres = new ArrayList<>();
     List<String> ubicacionesCostos = new ArrayList<>();
     List<String> ubicacionesTiempos = new ArrayList<>();
@@ -152,7 +151,7 @@
         </header>
         <br><br><br><br>
         
-        <h2 class="titulito">Lugares Populares</h2>
+        <h2 class="titulito">Lugares Populares para ti, <%=idUsuario%></h2>
         
         <div class="cajita">
             <div id="myCarousel" class="carousel slide" data-ride="carousel">
