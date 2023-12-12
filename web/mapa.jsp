@@ -60,7 +60,7 @@
 
         <div  cass="columna">
             <h1>TripTrove</h1>
-            <h3>Tu gu�a viajero</h3>
+            <h3>Tu guía viajero</h3>
             <h2>Opciones de llegada</h2>
             <div class="drodown">
                 <select id="modoViaje" class="Dropdown menu">
@@ -109,7 +109,7 @@
                 directionsRenderer = new google.maps.DirectionsRenderer({suppressMarkers: true, panel: document.getElementById('ruta-info')});
                 directionsRenderer.setMap(map);
 
-                // ... (resto del c�digo igual)
+                // ... (resto del cï¿½digo igual)
 
                 lugares.forEach(function (lugar, index) {
                     var marker = new google.maps.Marker({
