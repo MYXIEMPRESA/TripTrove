@@ -1,57 +1,76 @@
-<%@page import="java.sql.Statement"%>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.Connection"%>
-<%@page import="java.sql.SQLException"%>
-<%@page import="java.sql.DriverManager"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
-<!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <style>
+            body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+}
+
+h1 {
+    color: #333;
+}
+
+#username_input, #message_input {
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 300px;
+}
+
+#output {
+    width: 300px;
+    height: 300px;
+    border: 1px solid #ddd;
+    margin-bottom: 5px;
+    padding: 10px;
+    overflow-y: auto;
+    background-color: #fff;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+        </style>
+        <title>administrador</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-    <%
-        //PROTECCION
-        String nom_usuario = (String) session.getAttribute("usuario");
-        String com_usuario = nom_usuario;
-        String id_usuario = "2";
-        String usuarioTecnio = "servicioTecnico";
-
-        Connection conexion = null;
-        Statement statement = null;
-        ResultSet resultado = null;
-
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/triptrove?autoReconnect=true&useSSL=false", "root", "1234");
-            statement = conexion.createStatement();
-
-            String sql = "SELECT idUsuario FROM usuario WHERE usuario = '" + nom_usuario + "'";
-            resultado = statement.executeQuery(sql);
-            com_usuario = resultado.getString("contra");
-
-        } catch (SQLException | ClassNotFoundException error) {
-            out.print(error.toString());
-    %>
-
-    <body>
-
-        <h1>Chat de <%=nom_usuario%></h1>
-        <h2>con <%=com_usuario%></h2>
-
-
+     <body>
+        <a href="principal.jsp">Regresar</a>
+        <h1>Servicio al cliente</h1>
+        <input id="username_input" placeholder="Your username">
         <div id="output"></div>
-
-        <input id="username_to" type="text" value="<%=id_usuario%>" hidden>
-        <input id="nom_to" type="text" value="<%=usuarioTecnio%>" hidden>
-        <input id="message_in" type="text">
-        <input id="username_in" typse="text" value="<%=com_usuario%>" hidden>
-        <input id="nom_in" type="text" value="<%=nom_usuario%>" hidden>
-        <button onclick="send()">Enviar</button>
-
+        <input id="message_input" type="text">
         <script src="websocket.js"></script>
-
+        <button onclick="send()">Send message</button> 
+        <button  type="submit"  name="accion" id="accion" value="enviar">Terminar</button>
     </body>
 </html>

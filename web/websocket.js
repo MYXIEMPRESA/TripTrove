@@ -1,4 +1,7 @@
-var wsURI = "ws://40.86.11.134:8080/Psyness/chat";
+var serverIP = "myxitech.gerdoc.com"; // Asegúrate de que no hay espacios al inicio
+var wsURI = "ws://" + serverIP + ":8080/DishifyMx/chat";
+
+
 var websocket = new WebSocket(wsURI);
 console.log("WebSocket readyState: " + websocket.readyState);
 
@@ -31,27 +34,19 @@ function onMessage(event) {
 
 function display(dataString) {
     var data = JSON.parse(dataString);
-        
-    var contentMessage = "<div class=\"conversation-item-content\">"+ "<div class=\"conversation-item-wrapper\">"+
-                                        "<div class=\"conversation-item-box\"><strong>"+data.userName+
-                                            "</strong><div class=\"conversation-item-text\">"+data.conten+
-                                            "</div>"+
-                                        "</div>"+
-                                    "</div>"+
-                                    "</div>"+"<br>";
-                        
-    document.getElementById("output").innerHTML += contentMessage;
+    var contentMessage = data.conten + "</p>";
+    document.getElementById("output").innerHTML += contentMessage + "</br>";
 }
 
 function send() {
     if (websocket.readyState === WebSocket.OPEN) {
         var message = document.getElementById("message_input").value;
-        var username = document.getElementById("message_username").value;
+        var username = document.getElementById("username_input").value;
         var json = {
-            "conten": message,
+            "conten":username+ ": " + message,
             "userName": username
         };
-        console.log("Sending"+username+message);
+        console.log("Sending " + message);
         websocket.send(JSON.stringify(json));
     } else {
         console.error("WebSocket connection is not open.");
