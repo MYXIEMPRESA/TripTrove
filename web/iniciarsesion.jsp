@@ -1,4 +1,3 @@
-
 <%@ page import="java.sql.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
@@ -12,7 +11,7 @@
 
     try {
         Class.forName("com.mysql.cj.jdbc.Driver");
-        conexion = DriverManager.getConnection("jdbc:mysql://localhost:3308/triptrove?autoReconnect=true&useSSL=false", "root", "n0m3l0");
+        conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/triptrove?autoReconnect=true&useSSL=false", "root", "1234");
         statement = conexion.createStatement();
 
         // Consulta para obtener la contraseña y el idRol del usuario ingresado
@@ -24,6 +23,8 @@
             if (contraseniaIngresada.equals(contraseniaAlmacenada)) {
                 // Las contraseñas coinciden
                 int idRol = resultado.getInt("idRol");
+                session.setAttribute("usuario", usuarioIngresado);
+
                 if (idRol == 1) { // Supongamos que 1 es el idRol de administrador
                     response.sendRedirect("Administrador.jsp");
                 } else if (idRol == 2) {

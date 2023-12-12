@@ -43,7 +43,7 @@
 
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                conn = DriverManager.getConnection("jdbc:mysql://localhost:3308/triptrove?autoReconnect=true&useSSL=false", "root", "n0m3l0");
+                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/triptrove?autoReconnect=true&useSSL=false", "root", "1234");
                 List<Map<String, Object>> ubicaciones = new ArrayList<>();
                 stmt = conn.createStatement();
                 rs = stmt.executeQuery("SELECT * FROM ubicacion");

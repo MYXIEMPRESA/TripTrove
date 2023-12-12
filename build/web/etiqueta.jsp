@@ -33,7 +33,7 @@
             
 
             Class.forName("com.mysql.cj.jdbc.Driver");
-            cnx = DriverManager.getConnection("jdbc:mysql://localhost:3308/triptrove?autoReconnect=true&useSSL=false", "root", "n0m3l0");
+            cnx = DriverManager.getConnection("jdbc:mysql://localhost:3308/triptrove?autoReconnect=true&useSSL=false", "root", "1234");
 
             String checkUserEmailQuery = "SELECT COUNT(*) AS count FROM usuario WHERE usuario = ? OR correo = ?";
             try (PreparedStatement pstCheckUserEmail = cnx.prepareStatement(checkUserEmailQuery)) {
