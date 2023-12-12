@@ -26,9 +26,9 @@
                 session.setAttribute("usuario", usuarioIngresado);
 
                 if (idRol == 1) { // Supongamos que 1 es el idRol de administrador
-                    response.sendRedirect("Administrador.jsp");
+                    response.sendRedirect("administrador.html");
                 } else if (idRol == 2) {
-                    response.sendRedirect("ServicioTecnico.jsp");
+                    response.sendRedirect("servicioTecnico.html");
                 } else if (idRol == 3) {
                     response.sendRedirect("principal.jsp?usuario=" + usuarioIngresado);
                 }

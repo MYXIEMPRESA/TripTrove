@@ -61,7 +61,7 @@
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/TripTrove?autoReconnect=true&useSSL=false", "root", "1234");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/TripTrove?autoReconnect=true&useSSL=false", "root", "n0m3l0");
             statement = connection.createStatement();
 
             // Procesar la actualización de datos
