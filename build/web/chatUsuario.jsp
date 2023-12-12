@@ -220,7 +220,6 @@ a:hover {
         <input id="message_input" type="text">
         <script src="websocket.js"></script>
         <button onclick="send()">Send message</button> 
-        <button  type="submit"  name="accion" id="accion" value="enviar">Terminar</button>
         </div>
          <div class="loader"></div>
     </body>

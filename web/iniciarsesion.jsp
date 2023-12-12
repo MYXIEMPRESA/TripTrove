@@ -11,7 +11,7 @@
 
     try {
         Class.forName("com.mysql.cj.jdbc.Driver");
-        conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/triptrove?autoReconnect=true&useSSL=false", "root", "n0m3l0");
+        conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/triptrove?autoReconnect=true&useSSL=false", "root", "1234");
         statement = conexion.createStatement();
 
         // Consulta para obtener la contraseña y el idRol del usuario ingresado
