@@ -1,0 +1,220 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    color: #f7f7f7;
+    text-decoration: none;
+}
+
+body {
+    background-color: rgb(255, 255, 255);
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.9s;
+    padding: 40px 100px;
+    z-index: 100000;
+    font-size: 18px;
+    background: #000000;
+    color: #ffffff;
+}
+
+header .logo {
+    position: relative;
+    font-weight: 700;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 2em;
+    letter-spacing: 2px;
+    transition: 0.6s;
+}
+
+header ul {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header ul li {
+    position: relative;
+    list-style: none;
+}
+
+header ul li a {
+    position: relative;
+    margin: 0 15px;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    letter-spacing: 2px;
+    font-weight: 500;
+    transition: 0.5s;
+    overflow: hidden;
+}
+
+header ul li a::before,
+header ul li a::after {
+    content: "";
+    position: absolute;
+    width: 120%;
+    height: 3px;
+    background-color: #fafafa;
+    z-index: -1;
+    transition: transform 0.8s;
+    border-radius: 5px;
+}
+
+header ul li a::before {
+    top: 0;
+    left: -10%;
+    transform: scaleX(0);
+    transform-origin: right;
+}
+
+header ul li a::after {
+    bottom: 0;
+    right: -10%;
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+header ul li a:hover {
+    color: #ffffff;
+}
+
+header ul li a:hover::before,
+header ul li a:hover::after {
+    transform: scaleX(1);
+    transform-origin: center;
+}
+
+.content {
+    margin-top: 120px;
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    padding: 4% 2% ;
+    box-sizing: border-box;
+}
+
+.box {
+    flex: 1;
+    overflow: hidden;
+    margin: 8px;
+    line-height: 0;
+    box-shadow:  0 20px 30px rgba(0, 0, 0, 0.2);
+    transition: all 600ms;
+}
+
+.box > img {
+    width: 200%;
+    height: calc(100% - 10vh);
+    object-fit: cover;
+    transition: all 300ms;
+}
+
+.box > span {
+    color: #000000;
+    font-size: 35px;
+    font-family: sans-serif;
+    display: block;
+    text-align: center;
+    height: 10vh;
+    line-height: 2.6;
+}
+
+.box:hover{
+    flex: 50%;
+}
+
+.box:hover > img {
+    width: 100%;
+    height: 100%;
+}
+
+.image-text {
+    color: #000000;
+    justify-self: center;
+    text-align: justify;
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-bottom: 100px;
+}
+
+.image-text h1 {
+    color: #000000;
+    font-size: 37px;
+}
+
+.image-text p{
+    color: #000000;
+    font-size: 22px;
+}
+
+.image-text1 {
+    color: #000000;
+    justify-self: center;
+    text-align: justify;
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-bottom: 100px;
+}
+
+.image-text1 h1 {
+    color: #000000;
+    font-size: 37px;
+}
+
+.image-text1 p {
+    color: #000000;
+    font-size: 22px;
+}
+
+.image-text1 ul li {
+    color: #000000;
+    font-size: 22px;
+}
+
+.content2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-wrap: wrap;
+}
+
+.icon-description {
+    margin: 50px;
+    margin-bottom: 100px;
+}
+
+.icon-description i {
+    font-size: 70px;
+    color: #000000;
+    transition: 0.7s;
+}
+
+h1 {
+   color: #000000;
+    text-align: center;
+    font-size: 37px;
+}
+
+.icon-description p {
+    color: #000000;
+    font-size: 20px;
+    margin-top: 10px;
+}
+.icon-description:hover i {
+    color: #8c00ff; 
+    text-shadow: 0 0 120px #8c00ff;
+}

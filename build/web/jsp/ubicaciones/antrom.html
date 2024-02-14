@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Museo Nacional de Antropología</title>
+    <link rel="stylesheet" type="text/css" href="css/antrom.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, initial-scale=1.0">
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">TripTrove</a>
+        <ul>
+            <li><a href="../jsp/principal.jsp">VOLVER</a></li>
+        </ul>
+    </header>
+
+    <div class="content">
+        <!-- Sección de Imágenes Destacadas -->
+        <div class="box">
+            <img src="css/img/antrom1.jpg" alt="Larger Image">
+            <span>Explora la Historia</span>
+        </div>
+        <div class="box">
+            <img src="css/img/antrom2.jpg" alt="Small Image 1">
+            <span>Colecciones Fascinantes</span>
+        </div>
+        <div class="box">
+            <img src="css/img/antrom3.jpg" alt="Small Image 2">
+            <span>Arte y Cultura</span>
+        </div>
+        <div class="box">
+            <img src="css/img/antrom.jpg" alt="Small Image 3">
+            <span>Conoce las Raíces</span>
+        </div>
+    </div>
+
+    <!-- Sección de Introducción -->
+    <div class="image-text">
+        <h1>Descubre la Diversidad Cultural en el Museo Nacional de Antropología</h1>
+        <p>Sumérgete en las riquezas de las culturas mexicanas y del mundo en el Museo Nacional de Antropología. Este museo emblemático te invita a explorar la historia, el arte y las tradiciones que han dado forma a la humanidad.</p>
+        <p>Desde fascinantes exposiciones hasta colecciones artefactos únicos, el Museo de Antropología es una ventana a la diversidad cultural. Únete a nosotros y emprende un viaje en el tiempo y a través de las culturas que han dejado una huella indeleble en la humanidad.</p>
+    </div>
+
+    <!-- Sección de Actividades -->
+    <div class="image-text1">
+        <h1>¿Qué puedes hacer?</h1>
+        <p>El Museo Nacional de Antropología ofrece una variedad de experiencias educativas y culturales. Aquí algunas sugerencias para aprovechar al máximo tu visita:</p>
+        <ul>
+            <li>Explorar las diferentes salas temáticas que abarcan desde la antigüedad hasta la época contemporánea.</li>
+            <li>Participar en visitas guiadas y actividades interactivas para aprender más sobre las culturas exhibidas.</li>
+            <li>Admirar las impresionantes obras de arte y artefactos que cuentan historias fascinantes.</li>
+        </ul>
+    </div>
+
+    <!-- Sección de "Lugar ideal para" -->
+    <h1>Lugar ideal para:</h1>
+    <div class="content2">
+        <div class="icon-description">
+            <i class='bx bxs-camera'></i>
+            <p>fotografías</p>
+        </div>
+        <div class="icon-description">
+            <i class='bx bxs-book-open'></i>
+            <p>aprendizaje</p>
+        </div>
+        <div class="icon-description">
+            <i class='bx bxs-paint'></i>
+            <p>arte</p>
+        </div>
+        <div class="icon-description">
+            <i class='bx bxs-group'></i>
+            <p>exploración en grupo</p>
+        </div>
+        <div class="icon-description">
+            <i class='bx bxs-coffee'></i>
+            <p>descanso y cafetería</p>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        window.addEventListener("scroll", function () {
+            var header = document.querySelector("header");
+            header.classList.toggle("sticky", window.scrollY > 0);
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Museo Frida Kahlo</title>
+        <link rel="stylesheet" type="text/css" href="css/fridam.css">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, initial-scale=1.0">
+    </head>
+    <body>
+        <header>
+            <a href="#" class="logo">TripTrove</a>
+            <ul>
+                <li><a href="../jsp/comentarios.jsp">COMENTARIOS</a></li>
+                <li><a href="../jsp/principal.jsp">VOLVER</a></li>
+            </ul>
+        </header>
+
+        <div class="content">
+            <!-- Sección de Imágenes Destacadas -->
+            <div class="box">
+                <img src="css/img/frida1.jpg" alt="Larger Image">
+                <span>Arte</span>
+            </div>
+            <div class="box">
+                <img src="css/img/frida2.jpg" alt="Small Image 1">
+                <span>Cultura</span>
+            </div>
+            <div class="box">
+                <img src="css/img/frida3.jpg" alt="Small Image 2">
+                <span>Historia</span>
+            </div>
+            <div class="box">
+                <img src="css/img/frida.jpg" alt="Small Image 3">
+                <span>Inspiración</span>
+            </div>
+        </div>
+
+        <!-- Sección de Introducción -->
+        <div class="image-text">
+            <h1>Explora el Museo Frida Kahlo</h1>
+            <p>Sumérgete en la vida y obra de la icónica artista mexicana Frida Kahlo. El Museo Frida Kahlo, también conocido como la Casa Azul, ofrece una experiencia única para los amantes del arte y la cultura.</p>
+            <p>Admira las obras maestras de Frida, explora su casa llena de colores vibrantes y descubre la historia fascinante que rodea a esta figura central del arte mexicano.</p>
+        </div>
+
+        <!-- Sección de Actividades -->
+        <div class="image-text1">
+            <h1>¿Qué puedes hacer?</h1>
+            <p>En el Museo Frida Kahlo, la experiencia va más allá de la contemplación del arte. Aquí algunas actividades que puedes disfrutar durante tu visita:</p>
+            <ul>
+                <li>Explora las pinturas y obras de Frida Kahlo en detalle.</li>
+                <li>Sumérgete en la historia de su vida y su influencia en el arte mexicano.</li>
+                <li>Participa en eventos culturales y exposiciones temporales.</li>
+            </ul>
+        </div>
+
+        <!-- Sección de "Lugar ideal para" -->
+        <h1>Lugar ideal para:</h1>
+        <div class="content2">
+            <div class="icon-description">
+                <i class='bx bxs-camera'></i>
+                <p>fotografías</p>
+            </div>
+            <div class="icon-description">
+                <i class='bx bx-book-open'></i>
+                <p>aprender</p>
+            </div>
+            <div class="icon-description">
+                <i class='bx bx-music'></i>
+                <p>apreciar la música</p>
+            </div>
+            <div class="icon-description">
+                <i class='bx bxs-paint'></i>
+                <p>inspiración artística</p>
+            </div>
+            <div class="icon-description">
+                <i class='bx bxs-coffee'></i>
+                <p>disfrutar de un café</p>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            window.addEventListener("scroll", function () {
+                var header = document.querySelector("header");
+                header.classList.toggle("sticky", window.scrollY > 0);
+            })
+        </script>
+    </body>
+</html>

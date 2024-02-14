@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Parque México</title>
+    <link rel="stylesheet" type="text/css" href="css/pmexico.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, initial-scale=1.0">
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">TripTrove</a>
+        <ul>
+            <li><a href="../jsp/principal.jsp">VOLVER</a></li>
+        </ul>
+    </header>
+
+    <div class="content">
+        <!-- Sección de Imágenes Destacadas -->
+        <div class="box">
+            <img src="css/img/pmex1.jpg" alt="Larger Image">
+            <span>Naturaleza en el Corazón de la Ciudad</span>
+        </div>
+        <div class="box">
+            <img src="css/img/pmex2.jpg" alt="Small Image 1">
+            <span>Relajación y Recreación</span>
+        </div>
+        <div class="box">
+            <img src="css/img/pmex3.jpg" alt="Small Image 2">
+            <span>Actividades al Aire Libre</span>
+        </div>
+        <div class="box">
+            <img src="css/img/pmex.jpg" alt="Small Image 3">
+            <span>Paseos Tranquilos</span>
+        </div>
+    </div>
+
+    <!-- Sección de Introducción -->
+    <div class="image-text">
+        <h1>Descubre la Tranquilidad en el Parque México</h1>
+        <p>Sumérgete en un oasis de serenidad en el corazón de la ciudad en el Parque México. Este encantador parque ofrece un escape natural donde puedes disfrutar de la belleza del entorno, realizar actividades al aire libre y encontrar momentos de paz.</p>
+        <p>Pasea por sus senderos arbolados, relájate en áreas verdes o participa en actividades recreativas. El Parque México es el lugar perfecto para disfrutar de la naturaleza y desconectarte del ajetreo urbano.</p>
+    </div>
+
+    <!-- Sección de Actividades -->
+    <div class="image-text1">
+        <h1>¿Qué puedes hacer?</h1>
+        <p>El Parque México ofrece una variedad de actividades para que disfrutes de su belleza natural. Aquí algunas sugerencias:</p>
+        <ul>
+            <li>Pasear por los senderos y disfrutar de la flora y fauna del parque.</li>
+            <li>Practicar yoga o ejercicios al aire libre en áreas designadas.</li>
+            <li>Organizar un picnic y relajarte bajo la sombra de los árboles.</li>
+        </ul>
+    </div>
+
+    <!-- Sección de "Lugar ideal para" -->
+    <h1>Lugar ideal para:</h1>
+    <div class="content2">
+        <div class="icon-description">
+            <i class='bx bxs-camera'></i>
+            <p>fotografías</p>
+        </div>
+        <div class="icon-description">
+            <i class='bx bx-football' ></i>
+            <p>actividades al aire libre</p>
+        </div>
+        <div class="icon-description">
+            <i class='bx bxs-dish'></i>
+            <p>picnics</p>
+        </div>
+        <div class="icon-description">
+            <i class='bx bxs-tree'></i>
+            <p>apreciar la naturaleza</p>
+        </div>
+        <div class="icon-description">
+            <i class='bx bxs-coffee'></i>
+            <p>descanso y cafetería</p>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        window.addEventListener("scroll", function () {
+            var header = document.querySelector("header");
+            header.classList.toggle("sticky", window.scrollY > 0);
+        })
+    </script>
+</body>
+</html>

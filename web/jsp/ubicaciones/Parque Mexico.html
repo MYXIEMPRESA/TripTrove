@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Parque bicentenario</title>
+        <link rel="stylesheet" type="text/css" href="css/chapu.css">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, initial-scale=1.0">
+    </head>
+    <body>
+        <header>
+            <a href="#" class="logo">TripTrove</a>
+            <ul>
+                <li><a href="../jsp/comentarios.jsp">COMENTARIOS</a></li>
+                <li><a href="../principal.jsp">VOLVER</a></li>
+            </ul>
+        </header>
+
+        <div class="content">
+            <div class="box">
+                <img src="css/img/ParqueMex.jpg" alt="Larger Image">
+                <span>Descubre</span>
+            </div>
+            <div class="box">
+                <img src="css/img/ParqueMex1.jpg" alt="Small Image 1">
+                <span>Relájate</span>
+            </div>
+            <div class="box">
+                <img src="css/img/ParqueMex2.jpeg" alt="Small Image 2">
+                <span>Explora</span>
+            </div>
+            <div class="box">
+                <img src="css/img/ParqueMex3.jpg" alt="Small Image 3">
+                <span>Sumérgete</span>
+            </div>
+
+        </div>
+
+        <div class="image-text">
+            <h1>"¡Explora la Magia de la Naturaleza en Parque México: Tu Destino de Aventuras Urbanas!"</h1>
+            <br>
+            <p>
+                Descubre la armonía perfecta entre la naturaleza y la vida urbana en Parque México. 
+                Desde serenas caminatas y áreas de juego para niños hasta extensas zonas deportivas, el parque ofrece un oasis de entretenimiento versátil. 
+                Con eventos culturales y actividades recreativas regulares, además, tu amigo peludo es bienvenido: amplios senderos y áreas dedicadas hacen que Parque México sea el lugar ideal para pasear 
+                con tus mascotas y disfrutar de momentos especiales juntos. 
+
+
+            </p>
+        </div>
+
+        <div class="image-text1">
+
+        </div>
+
+        <h1>Lugar ideal para:</h1>+
+        <div class="content2">
+            <div class="icon-description">
+                <i class='bx bxs-camera'></i>
+                <p>Fotografías</p>
+            </div>
+            <div class="icon-description">
+                <i class='bx bxs-paint'></i>
+                <p>Cultura</p>
+            </div>
+            <div class="icon-description">
+                <i class='bx bxs-leaf' ></i>
+                <p>Naturaleza</p>
+            </div>
+            <div class="icon-description">
+                <i class='bx bx-run'></i>
+                <p>Actividades físicas</p>
+            </div>
+            <div class="icon-description">
+                <i class='bx bx-bone'></i>
+                <p>Mascotas</p>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            window.addEventListener("scroll", function () {
+                var header = document.querySelector("header");
+                header.classList.toggle("sticky", window.scrollY > 0);
+            })
+        </script>
+    </body>
+</html>

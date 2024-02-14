@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>KidZania</title>
+    <link rel="stylesheet" type="text/css" href="css/kidzania.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, initial-scale=1.0">
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">TripTrove</a>
+        <ul>
+            <li><a href="../jsp/principal.jsp">VOLVER</a></li>
+        </ul>
+    </header>
+
+    <div class="content">
+        <!-- Sección de Imágenes Destacadas -->
+        <div class="box">
+            <img src="css/img/kid.jpg" alt="Larger Image">
+            <span>Aprender Jugando</span>
+        </div>
+        <div class="box">
+            <img src="css/img/kid2.jpg" alt="Small Image 1">
+            <span>Explorar Profesiones</span>
+        </div>
+        <div class="box">
+            <img src="css/img/kid3.jpg" alt="Small Image 2">
+            <span>Diversión Educativa</span>
+        </div>
+        <div class="box">
+            <img src="css/img/kid4.jpg" alt="Small Image 3">
+            <span>Interacción Creativa</span>
+        </div>
+    </div>
+
+    <!-- Sección de Introducción -->
+    <div class="image-text">
+        <h1>Descubre KidZania: Donde los Niños Gobiernan</h1>
+        <p>En KidZania, los niños tienen la oportunidad de explorar el mundo real a través de actividades divertidas y educativas. Este parque temático único ofrece una experiencia inmersiva donde los pequeños pueden aprender jugando y descubrir una variedad de profesiones de una manera interactiva.</p>
+        <p>Desde ser bomberos hasta médicos o chefs, KidZania permite a los niños experimentar el mundo de los adultos de una manera segura y divertida. ¡Deja que la aventura educativa comience en KidZania!</p>
+    </div>
+
+    <!-- Sección de Actividades -->
+    <div class="image-text1">
+        <h1>¿Qué pueden hacer?</h1>
+        <p>En KidZania, la diversión educativa está en todas partes. Aquí algunas actividades que los niños pueden disfrutar durante su visita:</p>
+        <ul>
+            <li>Experimentar diferentes profesiones a través de simulaciones interactivas.</li>
+            <li>Ganar y gastar la moneda local de KidZania en diversas actividades.</li>
+            <li>Aprender sobre el trabajo en equipo y la toma de decisiones.</li>
+        </ul>
+    </div>
+
+    <!-- Sección de "Lugar ideal para" -->
+    <h1>Lugar ideal para:</h1>
+    <div class="content2">
+        <div class="icon-description">
+            <i class='bx bxs-camera'></i>
+            <p>fotografías</p>
+        </div>
+        <div class="icon-description">
+            <i class='bx bx-paint'></i>
+            <p>creatividad</p>
+        </div>
+        <div class="icon-description">
+            <i class='bx bx-run'></i>
+            <p>actividades físicas</p>
+        </div>
+        <div class="icon-description">
+            <i class='bx bxs-group'></i>
+            <p>eventos en grupo</p>
+        </div>
+        <div class="icon-description">
+            <i class='bx bx-food-menu'></i>
+            <p>meriendas</p>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        window.addEventListener("scroll", function () {
+            var header = document.querySelector("header");
+            header.classList.toggle("sticky", window.scrollY > 0);
+        })
+    </script>
+</body>
+</html>

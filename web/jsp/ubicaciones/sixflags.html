@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Six Flags</title>
+    <link rel="stylesheet" type="text/css" href="css/sixflags.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, initial-scale=1.0">
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">TripTrove</a>
+        <ul>
+            <li><a href="../jsp/comentarios.jsp">COMENTARIOS</a></li>
+            <li><a href="../jsp/principal.jsp">VOLVER</a></li>
+        </ul>
+    </header>
+
+    <div class="content">
+        <!-- Sección de Imágenes Destacadas -->
+        <div class="box">
+            <img src="css/img/six.jpg" alt="Larger Image">
+            <span>Emoción</span>
+        </div>
+        <div class="box">
+            <img src="css/img/six2.jpg" alt="Small Image 1">
+            <span>Aventura</span>
+        </div>
+        <div class="box">
+            <img src="css/img/six3.jpg" alt="Small Image 2">
+            <span>Diversión</span>
+        </div>
+        <div class="box">
+            <img src="css/img/six4.jpg" alt="Small Image 3">
+            <span>Entretenimiento</span>
+        </div>
+    </div>
+
+    <!-- Sección de Introducción -->
+    <div class="image-text">
+        <h1>Vive la Emoción en Six Flags</h1>
+        <p>Sumérgete en la adrenalina y la diversión sin límites en Six Flags. Con montañas rusas emocionantes, espectáculos espectaculares y entretenimiento para toda la familia, Six Flags es el destino perfecto para los amantes de la aventura.</p>
+        <p>Desde atracciones vertiginosas hasta áreas temáticas encantadoras, cada rincón de Six Flags está diseñado para ofrecer experiencias inolvidables. Únete a nosotros y descubre el parque de diversiones donde la aventura nunca termina.</p>
+    </div>
+
+    <!-- Sección de Actividades -->
+    <div class="image-text1">
+        <h1>¿Qué puedes hacer?</h1>
+        <p>En Six Flags, la diversión está garantizada para visitantes de todas las edades. Aquí algunas actividades que puedes disfrutar durante tu visita:</p>
+        <ul>
+            <li>Experimenta la adrenalina en montañas rusas emocionantes.</li>
+            <li>Disfruta de espectáculos en vivo llenos de emoción y talento.</li>
+            <li>Explora áreas temáticas únicas y encantadoras.</li>
+        </ul>
+    </div>
+
+    <!-- Sección de "Lugar ideal para" -->
+<h1>Lugar ideal para:</h1>
+<div class="content2">
+    <br>
+    <div class="icon-description">
+        <i class='bx bxs-camera'></i>
+        <p>fotografías</p>
+    </div>
+    <div class="icon-description">
+        <i class='bx bxs-hot'></i>
+        <p>diversión</p>
+    </div>
+    <div class="icon-description">
+        <i class='bx bxs-flag'></i>
+        <p>aventura</p>
+    </div>
+    <div class="icon-description">
+        <i class='bx bx-run'></i>
+        <p>actividades físicas</p>
+    </div>
+    <div class="icon-description">
+        <i class='bx bx-food-menu'></i>
+        <p>gastronomía</p>
+    </div>
+</div>
+
+
+    <script type="text/javascript">
+        window.addEventListener("scroll", function () {
+            var header = document.querySelector("header");
+            header.classList.toggle("sticky", window.scrollY > 0);
+        })
+    </script>
+</body>
+</html>
